@@ -56,3 +56,29 @@ TRANSITION_SETTINGS = {
         }
     }
 }
+
+MEDITATION_STATE_THOUGHTSEED_ATTRACTORS = {
+    "breath_control": {"primary": ["breath_focus"], "secondary": ["equanimity"], "condition": "redirect_breath"},
+    "mind_wandering": {"primary": ["pain_discomfort"], "secondary": ["pending_tasks"], "condition": "breath_control"},
+    "meta_awareness": {"primary": ["self_reflection"], "secondary": [], "condition": "mind_wandering"},
+    "redirect_breath": {"primary": ["equanimity"], "secondary": ["breath_focus"], "condition": "meta_awareness"}
+}
+
+THOUGHTSEED_AGENTS = {
+    "breath_focus": {"id": 0, "category": "focus", "intentional_weights": {"novice": 0.8, "expert": 0.95}, "decay_rate": 0.005, "recovery_rate": 0.06},
+    "equanimity": {"id": 4, "category": "emotional_regulation", "intentional_weights": {"novice": 0.3, "expert": 0.8}, "decay_rate": 0.008, "recovery_rate": 0.045},
+    "pain_discomfort": {"id": 1, "category": "body_sensation", "intentional_weights": {"novice": 0.6, "expert": 0.3}, "decay_rate": 0.02, "recovery_rate": 0.025},
+    "pending_tasks": {"id": 2, "category": "distraction", "intentional_weights": {"novice": 0.7, "expert": 0.2}, "decay_rate": 0.015, "recovery_rate": 0.03},
+    "self_reflection": {"id": 3, "category": "meta-awareness", "intentional_weights": {"novice": 0.5, "expert": 0.5}, "decay_rate": 0.003, "recovery_rate": 0.015}
+}
+
+THOUGHTSEED_INTERACTIONS = {
+    "breath_focus": {"connections": {"pain_discomfort": -0.6, "self_reflection": 0.5, "equanimity": 0.5, "pending_tasks": -0.5}},
+    "equanimity": {"connections": {"breath_focus": 0.6, "pain_discomfort": -0.6, "self_reflection": 0.5, "pending_tasks": -0.4}},
+    "pain_discomfort": {"connections": {"breath_focus": -0.4, "equanimity": -0.3, "self_reflection": 0.5, "pending_tasks": 0.3}},
+    "pending_tasks": {"connections": {"breath_focus": -0.3, "self_reflection": 0.3, "equanimity": -0.2, "pain_discomfort": 0.2}},
+    "self_reflection": {"connections": {"breath_focus": 0.3, "equanimity": 0.6, "pain_discomfort": -0.2, "pending_tasks": 0.2}}
+}
+
+# Noise parameters for biological variability
+NOISE_LEVEL = {'novice': 0.08, 'expert': 0.04}
