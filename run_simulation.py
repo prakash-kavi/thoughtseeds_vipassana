@@ -110,13 +110,6 @@ class MeditationSimulation:
         
         print(f"Results saved to {filename}")
 
-
-def visualize_results(results: Dict[str, Any]) -> None:
-    """Generate visualizations from simulation results"""
-    # This is a placeholder - we'll implement it in visualization.py
-    print("Visualization will be handled by visualization.py")
-
-
 def main():
     """Main entry point for running simulations"""
     # Create output directories
