@@ -249,42 +249,6 @@ def save_and_visualize(interactions: Dict, experience_level: str) -> None:
     # Create network visualization
     plot_interaction_network(interactions, experience_level)
 
-def plot_interaction_matrix(interactions: Dict, experience_level: str) -> None:
-    """Visualize the thoughtseed interaction matrix as a heatmap"""
-    try:
-        # Convert dictionary to matrix
-        matrix = np.zeros((len(THOUGHTSEEDS), len(THOUGHTSEEDS)))
-        for i, source in enumerate(THOUGHTSEEDS):
-            for j, target in enumerate(THOUGHTSEEDS):
-                if source != target:
-                    matrix[i, j] = interactions[source]["connections"].get(target, 0.0)
-        
-        # Create figure
-        plt.figure(figsize=CONFIG["visualization"]["figsize"])
-        
-        # Create heatmap using seaborn
-        ax = sns.heatmap(matrix, 
-                    cmap=CONFIG["visualization"]["cmap"],
-                    vmin=CONFIG["interaction_strengths"]["clip_min"], 
-                    vmax=CONFIG["interaction_strengths"]["clip_max"],
-                    annot=True, fmt=".2f",
-                    xticklabels=THOUGHTSEEDS,
-                    yticklabels=THOUGHTSEEDS)
-        
-        # Add title and labels
-        plt.title(f"Thoughtseed Interaction Matrix ({experience_level.title()})")
-        plt.xlabel("Target Thoughtseed")
-        plt.ylabel("Source Thoughtseed")
-        
-        # Adjust layout and save
-        plt.tight_layout()
-        plt.savefig(f"./results/plots/thoughtseed_matrix_{experience_level}.png", dpi=CONFIG["visualization"]["dpi"])
-        plt.close()
-        
-        print(f"Interaction matrix visualization saved as ./results/plots/thoughtseed_matrix_{experience_level}.png")
-    except Exception as e:
-        print(f"Error creating matrix visualization: {e}")
-
 def plot_interaction_network(interactions: Dict, experience_level: str) -> None:
     """Visualize the thoughtseed interaction network with improved node placement"""
     try:
