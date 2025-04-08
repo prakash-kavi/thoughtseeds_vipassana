@@ -580,7 +580,3 @@ if __name__ == "__main__":
     # Run for expert
     learner_expert = RuleBasedHybridLearner(experience_level='expert', timesteps_per_cycle=200)
     learner_expert.train()
-    
-    # Add comparison of transition matrices
-    plot_side_by_side_transition_matrices(learner_novice, learner_expert)
-    print("  - Side-by-side transition matrix comparison saved to results/plots/")
