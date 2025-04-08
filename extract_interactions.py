@@ -243,9 +243,6 @@ def save_and_visualize(interactions: Dict, experience_level: str) -> None:
     with open(f"./results/data/thoughtseed_interactions_{experience_level}.json", "w") as f:
         json.dump(interactions, f, indent=2)
     
-    # Create matrix visualization
-    plot_interaction_matrix(interactions, experience_level)
-    
     # Create network visualization
     plot_interaction_network(interactions, experience_level)
 
@@ -354,63 +351,6 @@ def plot_interaction_network(interactions: Dict, experience_level: str) -> None:
         print("NetworkX not installed - skipping network visualization")
     except Exception as e:
         print(f"Error creating network visualization: {e}")
-        
-def print_interaction_matrices():
-    """Print and compare novice and expert interaction matrices"""
-    matrices = {}
-    for level in ["novice", "expert"]:
-        try:
-            with open(f"./results/data/extracted_interactions_{level}.pkl", "rb") as f:
-                matrices[level] = pickle.load(f)
-                print(f"Successfully loaded {level} interaction matrix")
-        except FileNotFoundError:
-            print(f"No interaction matrix found for {level}. Using default.")
-            matrices[level] = get_default_interactions(level)
-    
-    # Print comparison table
-    print("\n" + "="*80)
-    print("THOUGHTSEED INTERACTION MATRIX COMPARISON (NOVICE vs EXPERT)")
-    print("="*80)
-    print(f"{'Source -> Target':<25} {'Novice':<10} {'Expert':<10} {'Difference':<10}")
-    print("-"*80)
-    
-    for source in THOUGHTSEEDS:
-        print(f"\n{source.upper()} connections:")
-        print("-"*80)
-        
-        for target in THOUGHTSEEDS:
-            if source == target:
-                continue
-                
-            novice_val = matrices["novice"][source]["connections"].get(target, 0.0)
-            expert_val = matrices["expert"][source]["connections"].get(target, 0.0)
-            diff = expert_val - novice_val
-            
-            print(f"{source} -> {target:<15} {novice_val:+.2f}      {expert_val:+.2f}      {diff:+.2f}")
-    
-    # Highlight key differences
-    print("\n" + "="*80)
-    print("KEY DIFFERENCES (Expert - Novice, |diff| ≥ 0.15)")
-    print("="*80)
-    
-    significant_diffs = []
-    for source in THOUGHTSEEDS:
-        for target in THOUGHTSEEDS:
-            if source == target:
-                continue
-                
-            novice_val = matrices["novice"][source]["connections"].get(target, 0.0)
-            expert_val = matrices["expert"][source]["connections"].get(target, 0.0)
-            diff = expert_val - novice_val
-            
-            if abs(diff) >= 0.15:
-                significant_diffs.append((source, target, novice_val, expert_val, diff))
-    
-    significant_diffs.sort(key=lambda x: abs(x[4]), reverse=True)
-    
-    for source, target, novice_val, expert_val, diff in significant_diffs:
-        direction = "stronger" if diff > 0 else "weaker"
-        print(f"- {source} -> {target}: {novice_val:+.2f} to {expert_val:+.2f} ({direction} by {abs(diff):.2f})")
 
 if __name__ == "__main__":
     # Ensure directories exist
@@ -424,5 +364,3 @@ if __name__ == "__main__":
     # Use the interaction dictionaries rather than just strings
     plot_interaction_network(novice_interactions, "novice")
     plot_interaction_network(expert_interactions, "expert")
-    plot_interaction_matrix(novice_interactions, "novice")
-    plot_interaction_matrix(expert_interactions, "expert")
