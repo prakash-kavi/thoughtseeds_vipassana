@@ -6,7 +6,7 @@ import os
 import json
 import itertools  # For groupby function used in calculating state durations
 
-from learning_plots import plot_results, plot_side_by_side_transition_matrices
+from learning_plots import plot_results
 
 def ensure_directories():
     """Create necessary directories for output files"""
