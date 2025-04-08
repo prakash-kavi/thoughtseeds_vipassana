@@ -1,0 +1,106 @@
+{
+  "interactions": {
+    "breath_focus": {
+      "connections": {
+        "pain_discomfort": -0.6,
+        "self_reflection": 0.5,
+        "equanimity": 0.5,
+        "pending_tasks": -0.5
+      }
+    },
+    "equanimity": {
+      "connections": {
+        "breath_focus": 0.6,
+        "pain_discomfort": -0.6,
+        "self_reflection": 0.5,
+        "pending_tasks": -0.4
+      }
+    },
+    "pain_discomfort": {
+      "connections": {
+        "breath_focus": -0.4,
+        "equanimity": -0.3,
+        "self_reflection": 0.5,
+        "pending_tasks": 0.3
+      }
+    },
+    "pending_tasks": {
+      "connections": {
+        "breath_focus": -0.3,
+        "self_reflection": 0.3,
+        "equanimity": -0.2,
+        "pain_discomfort": 0.2
+      }
+    },
+    "self_reflection": {
+      "connections": {
+        "breath_focus": 0.3,
+        "equanimity": 0.6,
+        "pain_discomfort": -0.2,
+        "pending_tasks": 0.2
+      }
+    }
+  },
+  "agent_parameters": {
+    "breath_focus": {
+      "base_activation": 0.3886122269619128,
+      "responsiveness": 0.7375792985773459,
+      "decay_rate": 0.005,
+      "recovery_rate": 0.06
+    },
+    "pain_discomfort": {
+      "base_activation": 0.28777129430467413,
+      "responsiveness": 0.7383641197222732,
+      "decay_rate": 0.02,
+      "recovery_rate": 0.025
+    },
+    "pending_tasks": {
+      "base_activation": 0.19536058043198334,
+      "responsiveness": 0.8435299630730919,
+      "decay_rate": 0.015,
+      "recovery_rate": 0.03
+    },
+    "self_reflection": {
+      "base_activation": 0.28114718203887823,
+      "responsiveness": 0.7982716212716541,
+      "decay_rate": 0.003,
+      "recovery_rate": 0.015
+    },
+    "equanimity": {
+      "base_activation": 0.4718955687187198,
+      "responsiveness": 0.6803854226128897,
+      "decay_rate": 0.008,
+      "recovery_rate": 0.045
+    }
+  },
+  "activation_means_by_state": {
+    "breath_control": {
+      "breath_focus": 0.6003424827579366,
+      "pain_discomfort": 0.13349135104136634,
+      "pending_tasks": 0.10721907669237601,
+      "self_reflection": 0.3588250348914055,
+      "equanimity": 0.6907845398321149
+    },
+    "mind_wandering": {
+      "breath_focus": 0.04999999999999998,
+      "pain_discomfort": 0.6807203475011531,
+      "pending_tasks": 0.4239117198346843,
+      "self_reflection": 0.06244667817624098,
+      "equanimity": 0.05673342611661612
+    },
+    "meta_awareness": {
+      "breath_focus": 0.05000000000000001,
+      "pain_discomfort": 0.052170107505594636,
+      "pending_tasks": 0.05000000000000001,
+      "self_reflection": 0.8309006070468089,
+      "equanimity": 0.05000000000000001
+    },
+    "redirect_breath": {
+      "breath_focus": 0.37355978270516127,
+      "pain_discomfort": 0.05000000000000001,
+      "pending_tasks": 0.05000000000000001,
+      "self_reflection": 0.07401036543637099,
+      "equanimity": 0.8536751296851391
+    }
+  }
+}

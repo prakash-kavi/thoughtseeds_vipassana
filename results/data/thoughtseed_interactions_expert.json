@@ -1,0 +1,36 @@
+{
+  "breath_focus": {
+    "connections": {
+      "pending_tasks": -0.6886308710308958,
+      "self_reflection": 0.6999999347730691,
+      "equanimity": 0.25
+    }
+  },
+  "pain_discomfort": {
+    "connections": {
+      "breath_focus": -0.699999999999947,
+      "self_reflection": -0.7,
+      "equanimity": -0.7
+    }
+  },
+  "pending_tasks": {
+    "connections": {
+      "breath_focus": -0.6999999999753838,
+      "pain_discomfort": 0.6999952502861125,
+      "self_reflection": -0.7,
+      "equanimity": -0.7
+    }
+  },
+  "self_reflection": {
+    "connections": {
+      "breath_focus": 0.6999999847381293,
+      "equanimity": 0.7
+    }
+  },
+  "equanimity": {
+    "connections": {
+      "breath_focus": 0.699982169920378,
+      "self_reflection": 0.6999999972101288
+    }
+  }
+}

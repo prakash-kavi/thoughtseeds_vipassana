@@ -1,0 +1,16 @@
+{
+  "transition_thresholds": {
+    "mind_wandering": 0.25,
+    "meta_awareness": 0.3,
+    "return_focus": 0.3
+  },
+  "meta_awareness_base": 0.7,
+  "meta_awareness_noise": 0.05,
+  "habituation_recovery": 0.3,
+  "average_meta_awareness_by_state": {
+    "breath_control": 0.7495287421941005,
+    "mind_wandering": 0.563852739369241,
+    "meta_awareness": 0.9000000000000001,
+    "redirect_breath": 0.8262238724602299
+  }
+}
