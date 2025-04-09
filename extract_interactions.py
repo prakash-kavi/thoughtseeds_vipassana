@@ -144,56 +144,6 @@ def calculate_interaction_strengths(
     
     return interactions
 
-def fallback_interaction_extraction(experience_level: str) -> Dict[str, Dict[str, float]]:
-    """Fallback method using weights or defaults when training data isn't available"""
-    print("Using fallback method for interaction extraction...")
-    
-    try:
-        # Updated path to read from results/data
-        with open(f"./results/data/learned_weights_{experience_level}.pkl", "rb") as f:
-            weights = pickle.load(f)
-            
-        # Initialize interaction dictionary
-        interactions = {ts: {"connections": {}} for ts in THOUGHTSEEDS}
-        
-        # Calculate interactions based on weights
-        for i, ts1 in enumerate(THOUGHTSEEDS):
-            for j, ts2 in enumerate(THOUGHTSEEDS):
-                if i == j:
-                    continue
-                
-                # Calculate normalized weight vectors
-                ts1_weights = weights[i, :]
-                ts2_weights = weights[j, :]
-                ts1_norm = ts1_weights / np.linalg.norm(ts1_weights)
-                ts2_norm = ts2_weights / np.linalg.norm(ts2_weights)
-                
-                # Calculate cosine similarity
-                similarity = np.dot(ts1_norm, ts2_norm)
-                
-                # Similarity indicates facilitating interactions
-                strength = similarity * 0.5
-                
-                # Only include meaningful interactions
-                if abs(strength) > 0.1:
-                    interactions[ts1]["connections"][ts2] = np.clip(
-                        strength, 
-                        CONFIG["interaction_strengths"]["clip_min"],
-                        CONFIG["interaction_strengths"]["clip_max"]
-                    )
-                    
-    except FileNotFoundError:
-        print("No learned weights found. Using default interactions.")
-        interactions = get_default_interactions(experience_level)
-    
-    # Apply domain knowledge
-    supplement_domain_knowledge(interactions, experience_level)
-    
-    # Save and visualize
-    save_and_visualize(interactions, experience_level)
-    
-    return interactions
-
 def get_default_interactions(experience_level: str) -> Dict[str, Dict[str, float]]:
     """Return default interaction matrix based on experience level"""
     if experience_level == "expert":
