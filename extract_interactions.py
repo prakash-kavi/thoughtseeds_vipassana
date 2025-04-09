@@ -1,5 +1,5 @@
 import numpy as np
-import pickle
+import json
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -75,15 +75,14 @@ def extract_interaction_matrix(experience_level: str) -> Dict[str, Dict[str, flo
 def load_training_data(experience_level: str) -> Optional[np.ndarray]:
     """Load training data history and extract activation arrays"""
     try:
-        # Fixed path to read from parent's results/data directory
-        with open(f"./results/data/learning_{experience_level}_history.pkl", "rb") as f:
-            history = pickle.load(f)
+        with open(f"./results/data/learning_{experience_level}_history.json", "r") as f:
+            history = json.load(f)
         activations_history = history.get('activations_history', [])
         if not activations_history:
             return None
         return np.array(activations_history)
     except FileNotFoundError:
-        print("Training history not found.")
+        print(f"Training history for {experience_level} not found.")
         return None
 
 def analyze_granger_causality(activations: np.ndarray) -> List[Tuple[str, str, float]]:
@@ -156,7 +155,7 @@ def supplement_domain_knowledge(interactions: Dict, experience_level: str) -> No
             domain_val = 0.5  # Increased from 0.3 to ensure stronger connection
             
             # Blend 70% data-driven with 30% domain knowledge
-            blend_ratio = 0.5  # Increased from 0.3 to give more weight to domain knowledge
+            blend_ratio = 0.3  # Chnage to 0.5 to give more weight to domain knowledge
             blended_val = (1-blend_ratio) * current_val + blend_ratio * domain_val
             
             # Apply with a lower threshold to ensure it's included
@@ -165,12 +164,6 @@ def supplement_domain_knowledge(interactions: Dict, experience_level: str) -> No
 
 def save_and_visualize(interactions: Dict, experience_level: str) -> None:
     """Save interaction matrix and create visualizations"""
-    # Save to file
-    with open(f"./results/data/extracted_interactions_{experience_level}.pkl", "wb") as f:
-        pickle.dump(interactions, f)
-        
-        # Add JSON export for direct consumption
-    import json
     with open(f"./results/data/thoughtseed_interactions_{experience_level}.json", "w") as f:
         json.dump(interactions, f, indent=2)
     
