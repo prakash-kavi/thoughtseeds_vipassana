@@ -26,7 +26,7 @@ def visualize_weight_matrix(experience_level='novice'):
     sns_heatmap = sns.heatmap(
         weight_matrix,
         annot=True,  # Show numerical values in cells
-        fmt='.3f',   # Format to 3 decimal places for precision
+        fmt='.2f',   # Format to 3 decimal places for precision
         cmap='viridis',  # Green-to-yellow colormap for positive weights, better for biological relevance
         xticklabels=states,  # Label x-axis with meditation states
         yticklabels=thoughtseeds,  # Label y-axis with thoughtseeds
