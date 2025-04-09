@@ -1,5 +1,5 @@
 import numpy as np
-import pickle
+import json
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -9,16 +9,16 @@ thoughtseeds = ['breath_focus', 'pain_discomfort', 'pending_tasks', 'self_reflec
 states = ['breath_control', 'mind_wandering', 'meta_awareness', 'redirect_breath']
 
 def visualize_weight_matrix(experience_level='novice'):
-    # Load the weight matrix from the .pkl file
-    pkl_file = f"learned_weights_{experience_level}.pkl"
+    # Load the weight matrix from the .json file
+    json_file = f"learned_weights_{experience_level}.json"
     try:
-        with open(pkl_file, 'rb') as f:
-            weight_matrix = pickle.load(f)
+        with open(json_file, 'r') as f:
+            weight_matrix = np.array(json.load(f))
     except FileNotFoundError:
-        print(f"Error: {pkl_file} not found. Please ensure the file exists.")
+        print(f"Error: {json_file} not found. Please ensure the file exists.")
         return
     except Exception as e:
-        print(f"Error loading {pkl_file}: {e}")
+        print(f"Error loading {json_file}: {e}")
         return
 
     # Create a heatmap using seaborn for clear visualization
