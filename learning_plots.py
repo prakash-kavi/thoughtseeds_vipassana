@@ -46,10 +46,7 @@ def plot_results(self):
     plt.xlim(0, self.timesteps)
     plt.grid(True, linestyle='--', alpha=0.7)
     
-    # Ensure directory exists before saving
-    os.makedirs('./results/plots/training/', exist_ok=True)
-    
-    plt.savefig(f'./results/plots/training/learning_{self.experience_level}_meditation_states.png', 
+    plt.savefig(f'./results/plots/learning_{self.experience_level}_meditation_states.png', 
                dpi=300, bbox_inches='tight')
     plt.close()
 
