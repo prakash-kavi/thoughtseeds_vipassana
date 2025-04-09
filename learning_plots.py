@@ -27,14 +27,14 @@ def plot_results(self):
     state_indices = [self.state_indices[state] for state in self.state_history]
     
     # Plot state transitions as step function with filled areas for each state
-    plt.step(time_steps, state_indices, where='post', color='#444444', linewidth=1.5, alpha=0.7)
+    plt.step(time_steps, state_indices, where='post', color='#0000FF', linewidth=1.5, alpha=0.7)
     
     states = ["breath_control", "mind_wandering", "meta_awareness", "redirect_breath"]
-    for i, state in enumerate(states):
-        mask = np.array(state_indices) == i
-        if any(mask):
-            plt.fill_between(time_steps, i, i+1, where=mask, step='post',
-                           color=state_colors[state], alpha=0.3)
+    # for i, state in enumerate(states):
+    #     mask = np.array(state_indices) == i
+    #     if any(mask):
+    #         plt.fill_between(time_steps, i, i+1, where=mask, step='post',
+    #                        color=state_colors[state], alpha=0.3)
     
     plt.xlabel('Timestep', fontsize=11)
     plt.ylabel('State', fontsize=11)
