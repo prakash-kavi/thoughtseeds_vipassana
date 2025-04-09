@@ -31,13 +31,14 @@ def visualize_weight_matrix(experience_level='novice'):
         xticklabels=states,  # Label x-axis with meditation states
         yticklabels=thoughtseeds,  # Label y-axis with thoughtseeds
         cbar_kws={'label': 'Weight Value'},  # Color bar label
-        vmin=0.0, vmax=1.0  # Adjust color scale to reflect expected biological range (0.05–1.0)
+        vmin=0.0, vmax=1.0,  # Adjust color scale to reflect expected biological range (0.05–1.0)
+        annot_kws={"size": 12}  # Increase font size of weights
     )
 
     # Add title and labels with context for thoughtseed dynamics
-    plt.title(f'Learned Weight Matrix for Thoughtseeds and States ({experience_level.capitalize()})',fontweight='bold')
-    plt.xlabel('Meditation State', fontweight='bold')
-    plt.ylabel('Thoughtseed', fontweight='bold')
+    plt.title(f'Learned Weight Matrix for Thoughtseeds and States ({experience_level.capitalize()})', fontweight='bold', fontsize=16)
+    plt.xlabel('Meditation State', fontweight='bold', fontsize=14)  # Increase font size to 14
+    plt.ylabel('Thoughtseed', fontweight='bold', fontsize=14)  # Increase font size to 14
     
     # Adjust layout to prevent label overlap
     plt.tight_layout()
