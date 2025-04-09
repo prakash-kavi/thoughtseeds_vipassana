@@ -283,7 +283,3 @@ if __name__ == "__main__":
     # Extract and compare both experience levels
     novice_interactions = extract_interaction_matrix("novice")
     expert_interactions = extract_interaction_matrix("expert")
-    
-    # Use the interaction dictionaries rather than just strings
-    plot_interaction_network(novice_interactions, "novice")
-    plot_interaction_network(expert_interactions, "expert")
