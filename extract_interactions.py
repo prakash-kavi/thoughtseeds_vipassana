@@ -56,7 +56,7 @@ def extract_interaction_matrix(experience_level: str) -> Dict[str, Dict[str, flo
     # Load data
     activations_array = load_training_data(experience_level)
     if activations_array is None:
-        return fallback_interaction_extraction(experience_level)
+        raise FileNotFoundError(f"Training history for {experience_level} not found. Please ensure the training data is available.")
     
     # Analyze causality using standard methods
     causal_pairs = analyze_granger_causality(activations_array)
