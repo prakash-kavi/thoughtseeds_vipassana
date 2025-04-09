@@ -5,6 +5,14 @@ import seaborn as sns
 import os
 import math
 
+# Add ensure_directories function to create necessary directories
+def ensure_directories():
+    """Create necessary directories for output files"""
+    # Create results directory and subdirectories if they don't exist
+    os.makedirs('./results/data', exist_ok=True)
+    os.makedirs('./results/plots', exist_ok=True)
+    print("Directories created/verified for output files")
+
 # Define thoughtseeds and states for labeling
 thoughtseeds = ['breath_focus', 'pain_discomfort', 'pending_tasks', 'self_reflection', 'equanimity']
 states = ['breath_control', 'mind_wandering', 'meta_awareness', 'redirect_breath']
@@ -73,4 +81,7 @@ def plot_weight_matrices():
     print("Weight matrices visualization saved as weight_matrices_comparison.png")
 
 if __name__ == "__main__":
+    # Ensure directories exist
+    ensure_directories()
+    
     plot_weight_matrices()
