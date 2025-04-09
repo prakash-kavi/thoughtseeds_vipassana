@@ -22,19 +22,21 @@ def plot_results(self):
         "redirect_breath": "#5ab4ac"
     }
 
+    # Ensure state_indices is a list of integers
+    state_indices = [self.state_indices[state] for state in self.state_history]
+    
     # Plot meditation states with improved styling
     plt.figure(figsize=(12, 3))
-    state_indices = [self.state_indices[state] for state in self.state_history]
     
     # Plot state transitions as step function with filled areas for each state
     plt.step(time_steps, state_indices, where='post', color='#0000FF', linewidth=1.5, alpha=0.7)
     
     states = ["breath_control", "mind_wandering", "meta_awareness", "redirect_breath"]
-    # for i, state in enumerate(states):
-    #     mask = np.array(state_indices) == i
-    #     if any(mask):
-    #         plt.fill_between(time_steps, i, i+1, where=mask, step='post',
-    #                        color=state_colors[state], alpha=0.3)
+    for i, state in enumerate(states):
+        mask = np.array(state_indices) == i
+        if any(mask):
+            plt.fill_between(time_steps, i, i+1, where=mask, step='post',
+                           color=state_colors[state], alpha=0.3)
     
     plt.xlabel('Timestep', fontsize=11)
     plt.ylabel('State', fontsize=11)
@@ -43,7 +45,11 @@ def plot_results(self):
              fontsize=13, fontweight='bold')
     plt.xlim(0, self.timesteps)
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.savefig(f'./results/plots/learning_{self.experience_level}_meditation_states.png', 
+    
+    # Ensure directory exists before saving
+    os.makedirs('./results/plots/training/', exist_ok=True)
+    
+    plt.savefig(f'./results/plots/training/learning_{self.experience_level}_meditation_states.png', 
                dpi=300, bbox_inches='tight')
     plt.close()
 
