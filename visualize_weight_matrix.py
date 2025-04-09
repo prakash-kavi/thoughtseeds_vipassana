@@ -3,17 +3,22 @@ import json
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import math
 
 # Define thoughtseeds and states for labeling
 thoughtseeds = ['breath_focus', 'pain_discomfort', 'pending_tasks', 'self_reflection', 'equanimity']
 states = ['breath_control', 'mind_wandering', 'meta_awareness', 'redirect_breath']
 
-def visualize_weight_matrix(experience_level='novice'):
+def floor_to_two_decimals(matrix):
+    return np.vectorize(lambda x: math.floor(x * 100) / 100)(matrix)
+
+def load_weight_matrix(experience_level):
     # Load the weight matrix from the .json file
     json_file = f"learned_weights_{experience_level}.json"
     try:
         with open(json_file, 'r') as f:
             weight_matrix = np.array(json.load(f))
+        weight_matrix = floor_to_two_decimals(weight_matrix)
     except FileNotFoundError:
         print(f"Error: {json_file} not found. Please ensure the file exists.")
         return
@@ -21,42 +26,51 @@ def visualize_weight_matrix(experience_level='novice'):
         print(f"Error loading {json_file}: {e}")
         return
 
-    # Create a heatmap using seaborn for clear visualization
-    plt.figure(figsize=(12, 8))
-    sns_heatmap = sns.heatmap(
-        weight_matrix,
-        annot=True,  # Show numerical values in cells
-        fmt='.2f',   # Format to 3 decimal places for precision
-        cmap='viridis',  # Green-to-yellow colormap for positive weights, better for biological relevance
-        xticklabels=states,  # Label x-axis with meditation states
-        yticklabels=thoughtseeds,  # Label y-axis with thoughtseeds
-        cbar_kws={'label': 'Weight Value'},  # Color bar label
-        vmin=0.0, vmax=1.0,  # Adjust color scale to reflect expected biological range (0.05–1.0)
-        annot_kws={"size": 12}  # Increase font size of weights
+def plot_weight_matrices():
+    novice_weight_matrix = load_weight_matrix('novice')
+    expert_weight_matrix = load_weight_matrix('expert')
+
+    if novice_weight_matrix is None or expert_weight_matrix is None:
+        return
+
+    fig, axs = plt.subplots(1, 2, figsize=(24, 8))
+
+    sns.heatmap(
+        expert_weight_matrix,
+        annot=True,
+        fmt='.2f',
+        cmap='viridis',
+        xticklabels=states,
+        yticklabels=thoughtseeds,
+        cbar_kws={'label': 'Weight Value'},
+        vmin=0.0, vmax=1.0,
+        annot_kws={"size": 12},
+        ax=axs[0]
     )
+    axs[0].set_title('Learned Weight Matrix for Thoughtseeds and States (Expert)', fontweight='bold', fontsize=16)
+    axs[0].set_xlabel('Meditation State', fontweight='bold', fontsize=14)
+    axs[0].set_ylabel('Thoughtseed', fontweight='bold', fontsize=14)
 
-    # Add title and labels with context for thoughtseed dynamics
-    plt.title(f'Learned Weight Matrix for Thoughtseeds and States ({experience_level.capitalize()})', fontweight='bold', fontsize=16)
-    plt.xlabel('Meditation State', fontweight='bold', fontsize=14)  # Increase font size to 14
-    plt.ylabel('Thoughtseed', fontweight='bold', fontsize=14)  # Increase font size to 14
-    
-    # Adjust layout to prevent label overlap
+    sns.heatmap(
+        novice_weight_matrix,
+        annot=True,
+        fmt='.2f',
+        cmap='viridis',
+        xticklabels=states,
+        yticklabels=thoughtseeds,
+        cbar_kws={'label': 'Weight Value'},
+        vmin=0.0, vmax=1.0,
+        annot_kws={"size": 12},
+        ax=axs[1]
+    )
+    axs[1].set_title('Learned Weight Matrix for Thoughtseeds and States (Novice)', fontweight='bold', fontsize=16)
+    axs[1].set_xlabel('Meditation State', fontweight='bold', fontsize=14)
+    axs[1].set_ylabel('Thoughtseed', fontweight='bold', fontsize=14)
+
     plt.tight_layout()
-
-    # Save the plot with a unique name to avoid overwriting
-    plt.savefig(f'./results/plots/weight_matrix_{experience_level}.png', dpi=300, bbox_inches='tight')
+    plt.savefig('./results/plots/weight_matrices_comparison.png', dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"Weight matrix visualization saved as weight_matrix_{experience_level}.png")
-
-    # Print summary statistics for biological plausibility and debugging
-    print(f"\nWeight Matrix Summary for {experience_level}:")
-    print(f"Shape: {weight_matrix.shape}")
-    print(f"Mean weight: {np.mean(weight_matrix):.3f}")
-    print(f"Max weight: {np.max(weight_matrix):.3f}")
-    print(f"Min weight: {np.min(weight_matrix):.3f}")
-    print(f"Std weight: {np.std(weight_matrix):.3f}")  # Added standard deviation for variability
+    print("Weight matrices visualization saved as weight_matrices_comparison.png")
 
 if __name__ == "__main__":
-    # Visualize for both novice and expert
-    visualize_weight_matrix('novice')
-    visualize_weight_matrix('expert')
+    plot_weight_matrices()
