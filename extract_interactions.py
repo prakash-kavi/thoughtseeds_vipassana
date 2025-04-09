@@ -144,25 +144,6 @@ def calculate_interaction_strengths(
     
     return interactions
 
-def get_default_interactions(experience_level: str) -> Dict[str, Dict[str, float]]:
-    """Return default interaction matrix based on experience level"""
-    if experience_level == "expert":
-        return {
-            "breath_focus": {"connections": {"pain_discomfort": -0.6, "self_reflection": 0.4, "equanimity": 0.3, "pending_tasks": -0.6}},
-            "equanimity": {"connections": {"breath_focus": 0.7, "pain_discomfort": -0.6, "self_reflection": 0.5, "pending_tasks": -0.5}},
-            "pain_discomfort": {"connections": {"breath_focus": -0.4, "equanimity": -0.3, "self_reflection": 0.4, "pending_tasks": -0.3}},
-            "pending_tasks": {"connections": {"breath_focus": -0.4, "self_reflection": -0.35, "equanimity": -0.3, "pain_discomfort": -0.3}},
-            "self_reflection": {"connections": {"breath_focus": 0.4, "equanimity": 0.7, "pain_discomfort": -0.3, "pending_tasks": -0.35}}
-        }
-    else:  # novice
-        return {
-            "breath_focus": {"connections": {"pain_discomfort": -0.5, "self_reflection": 0.3, "equanimity": -0.49, "pending_tasks": -0.5}},
-            "equanimity": {"connections": {"breath_focus": 0.5, "pain_discomfort": -0.4, "self_reflection": 0.4, "pending_tasks": -0.4}},
-            "pain_discomfort": {"connections": {"breath_focus": -0.3, "equanimity": -0.2, "self_reflection": 0.5, "pending_tasks": 0.3}},
-            "pending_tasks": {"connections": {"breath_focus": -0.3, "self_reflection": 0.0, "equanimity": -0.2, "pain_discomfort": -0.5}},
-            "self_reflection": {"connections": {"breath_focus": 0.3, "equanimity": 0.6, "pain_discomfort": -0.1, "pending_tasks": 0.0}}
-        }
-
 def supplement_domain_knowledge(interactions: Dict, experience_level: str) -> None:
     """Add domain-specific knowledge blended with data-driven results"""
     # Get parameters for this experience level
@@ -309,7 +290,6 @@ if __name__ == "__main__":
     # Extract and compare both experience levels
     novice_interactions = extract_interaction_matrix("novice")
     expert_interactions = extract_interaction_matrix("expert")
-    print_interaction_matrices()
     
     # Use the interaction dictionaries rather than just strings
     plot_interaction_network(novice_interactions, "novice")
