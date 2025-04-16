@@ -40,5 +40,9 @@ This is flat repository structure, and hence I provide high level organization.
 
 ## Workflow to run the Simulation
 1. ## Learning
-2. ## Simulation
+python learning_thoughtseeds_revised.py
+python extract_interactions.py
+3. ## Simulation
+python run_simulation.py
+
 
