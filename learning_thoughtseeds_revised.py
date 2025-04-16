@@ -1,3 +1,36 @@
+"""
+learning_thoughtseeds_revised.py
+
+This file implements the Rule-Based Hybrid Learner for simulating thought dynamics in focused-attention 
+Vipassana meditation. The code provides a computational framework for modeling meditative states, 
+meta-awareness, and state transitions, inspired by concepts from neuroscience and meditation research.
+
+Key Concepts:
+- Thoughtseeds and Meditative States: Hierarchical modeling of thought dynamics and transitions between 
+  states such as breath_control, mind_wandering, meta_awareness, and redirect_breath.
+- Meta-awareness and Attentional Control: Simulation of meta-awareness as a self-monitoring mechanism 
+  that drives attentional reorientation.
+- State Transitions and Neurocognitive Mechanisms: Modeling the effects of distraction, fatigue, and 
+  natural vs. forced transitions in meditative states.
+
+Relevant Literature:
+1. Sandved-Smith, L.; Hesp, C.; Mattout, J.; Friston, K.; Lutz, A.; Ramstead, M.J.D. 
+   "Towards a Computational Phenomenology of Mental Action: Modelling Meta-awareness and 
+   Attentional Control with Deep Active Inference." Frontiers in Psychology, 2021.
+   DOI: https://doi.org/10.3389/fpsyg.2021.749432
+
+2. Christoff, K.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Andrews-Hanna, J.R. 
+   "Mind-wandering as spontaneous thought: A dynamic framework." 
+   Nature Reviews Neuroscience, 2016. DOI: https://doi.org/10.1038/nrn.2016.113
+
+3. Delorme, A.; Brandmeyer, T. 
+   "Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms."
+   Perspectives on Psychological Science, 2021. DOI: https://doi.org/10.1177/1745691620968776
+
+This implementation integrates these theoretical models into a computational simulation, enabling 
+investigation of emergent dynamics in meditation practices.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
