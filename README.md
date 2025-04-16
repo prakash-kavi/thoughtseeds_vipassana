@@ -8,7 +8,7 @@ Prakash Chandra Kavi, Gorka Zamora-López, Daniel Ari Friedman, Gustavo Patow
 
 ## Overview
 
-The framework models meditative states (*breath_control*, *mind_wandering*, *meta_awareness*, *redirect_breath*) using a rule-based hybrid learning approach, inspired by:
+The framework models the four meditative states typically observed in Vipassana meditation (*breath_control*, *mind_wandering*, *meta_awareness*, *redirect_breath*) as emerging from hypothesized thoughtseed dynamics in the brain, as a initial step to modeling thought dynamics. The plots shown in the published paper are available in results/plots. The key papers whose code base helped in developing this codebase are cited below.   
 
 - Computational phenomenology for modeling meta-awareness [Sandved-Smith et al., 2021].
 - Mind-wandering dynamics from Christoff Lab’s research [Christoff et al., 2016; Andrews-Hanna et al., 2017].
