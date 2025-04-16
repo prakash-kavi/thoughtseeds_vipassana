@@ -32,7 +32,7 @@ This is flat repository structure, and hence I provide high level organization.
   - `metacognition.py`: Meta-awareness dynamics.
   - `param_manager.py`: Parameter handling.
   - `thoughtseed_network.py`: Thoughtseed interactions.
-  - `visualize_simulation.py`: Plots for Figures 7-8.
+  - `visualize_simulation.py`: Plots for Figures 8.
 - `results/`:
   - `data/`: JSON outputs (e.g., `learned_weights_*.json`).
   - `plots/`: PNG figures.
