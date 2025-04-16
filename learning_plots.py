@@ -1,3 +1,23 @@
+"""
+learning_plots.py
+
+This file provides functions to visualize the results of the meditation learning for 200 timesteps. 
+It generates plots for:
+- Meditation state transitions over time (Figure 6)
+- Meta-awareness levels during learning Thoughtseed activation dynamics (Figure 5).
+
+Outputs:
+- PNG files saved in the `./results/plots/` directory.
+
+Dependencies:
+- matplotlib: For plotting.
+- numpy: For numerical operations.
+
+Note:
+- Ensure that the simulation results are passed correctly to the `plot_results` function.
+- The visualization logic assumes specific formatting for state and activation histories.
+
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
