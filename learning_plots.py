@@ -1,21 +1,28 @@
 """
 learning_plots.py
 
-This file provides functions to visualize the results of the meditation learning for 200 timesteps. 
-It generates plots for:
-- Meditation state transitions over time (Figure 6)
-- Meta-awareness levels during learning Thoughtseed activation dynamics (Figure 5).
+This file provides functions to visualize the results of the meditation learning simulation for 200 timesteps. 
+It generates plots that illustrate key aspects of the learning process, aiding in the analysis of state transitions, 
+meta-awareness, and thoughtseed activation dynamics.
 
-Outputs:
-- PNG files saved in the `./results/plots/` directory.
+### Inputs:
+- `self.state_history`: A list of meditation states (`breath_control`, `mind_wandering`, `meta_awareness`, `redirect_breath`) recorded at each timestep.
+- `self.meta_awareness_history`: A list of meta-awareness levels corresponding to each timestep.
+- `self.activations_history`: A list of activation levels for each thoughtseed (`self_reflection`, `breath_focus`, `equanimity`, `pain_discomfort`, `pending_tasks`) across all timesteps.
+- `self.timesteps`: Total number of timesteps (default: 200).
+- `self.thoughtseeds`: List of thoughtseeds used in the simulation.
+- `self.state_indices`: A mapping of state names to integer indices for visualization.
 
-Dependencies:
-- matplotlib: For plotting.
-- numpy: For numerical operations.
+### Outputs:
+- **Meditation States Plot (Figure 6)**:
+  - A PNG file visualizing the transitions between meditation states over time, saved as:
+    `./results/plots/learning_{experience_level}_meditation_states.png`.
 
-Note:
-- Ensure that the simulation results are passed correctly to the `plot_results` function.
-- The visualization logic assumes specific formatting for state and activation histories.
+- **Meta-awareness and Thoughtseed Activations Plot (Figure 5)**:
+  - A PNG file containing two subplots:
+    1. Smoothed meta-awareness levels over time.
+    2. Smoothed activation levels for all thoughtseeds over time.
+  - Saved as: `./results/plots/learning_{experience_level}_thoughtseed_meta_activations.png`.
 
 """
 import matplotlib.pyplot as plt
