@@ -10,10 +10,13 @@ Prakash Chandra Kavi, Gorka Zamora-López, Daniel Ari Friedman, Gustavo Patow
 
 The framework models the four meditative states typically observed in Vipassana meditation (*breath_control*, *mind_wandering*, *meta_awareness*, *redirect_breath*) as emerging from hypothesized thoughtseed dynamics in the brain, as a initial step to modeling thought dynamics. The plots shown in the published paper are available in results/plots. The key papers whose code base helped in developing this codebase are cited below.   
 
-- Computational phenomenology for modeling meta-awareness [Sandved-Smith et al., 2021].
-- Mind-wandering dynamics from Christoff Lab’s research [Christoff et al., 2016; Andrews-Hanna et al., 2017].
-- Computational models of attention shifts [van Vugt et al., 2015].
-- Empirical Vipassana meditation studies [Lutz et al., 2015; Hasenkamp & Barsalou, 2012].
+- Sandved-Smith, L.; Hesp, C.; Mattout, J.; Friston, K.; Lutz, A.; Ramstead, M.J.D. Towards a Computational Phenomenology of Mental Action: Modelling Meta-awareness and Attentional Control with Deep Parametric Active Inference. Neurosci. Conscious. 2021, 2021, niab018. https://doi.org/10.1093/nc/niab018.
+- Christoff, K.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Andrews-Hanna, J.R. Mind-wandering as spontaneous thought: A dynamic framework. Nat. Rev. Neurosci. 2016, 17, 718–731. Available online: https://doi.org/10.1038/nrn.2016.113.
+- Andrews-Hanna, J.R.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Christoff, K. 13 The Neuroscience of Spontaneous Thought: An Evolving, Interdisciplinary Field. 2018 The Oxford handbook of spontaneous thought: Mind-wandering, creativity, and dreaming, 143.
+- van Vugt, M.; Taatgen, N.; Sackur, J.; Bastian, M. Modeling mind-wandering: A tool to better understand distraction. In Proceedings of the 13th International Conference on Cognitive Modeling, Groningen, The Netherlands, 9–11 April 2015; pp. 237–242. Available online:https://pure.rug.nl/ws/portalfiles/portal/16871364/vanVEtal15.pdf
+- Lutz, A.; Jha, A.P.; Dunne, J.D.; Saron, C.D. Investigating the Phenomenological Matrix of Mindfulness-Related Practices from a Neurocognitive Perspective. Am. Psychol. 2015, 70, 632–658. https://doi.org/10.1037/a0039585.
+- Hasenkamp, W.; Barsalou, L.W. Effects of Meditation Experience on Functional Connectivity of Distributed Brain Networks. Front. Hum. Neurosci. 2012, 6, 38. https://doi.org/10.3389/fnhum.2012.00038.
+- Delorme, A.; Brandmeyer, T. Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms. Perspect. Psychol. Sci. 2021, 16, 39–66. https://doi.org/10.1177/1745691620917340.
 
 Thoughtseeds act as attentional agents, competing to produce state transitions and generating outputs for **Figures 4-8** (weight matrices, activations, state evolution, interaction networks, hierarchical dynamics).
 
