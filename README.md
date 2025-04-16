@@ -39,10 +39,10 @@ This is flat repository structure, and hence I provide high level organization.
 - `extract_interactions.py`: Computes interaction networks (Figure 7 support).
 
 ## Workflow to run the Simulation
-1. ## Learning
+##1. Learning
 python learning_thoughtseeds_revised.py
 python extract_interactions.py
-3. ## Simulation
+##2. Simulation
 python run_simulation.py
 
 
