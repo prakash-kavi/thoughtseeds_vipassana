@@ -35,14 +35,6 @@ Thoughtseeds act as attentional agents, competing to produce state transitions a
   - `data/`: JSON outputs (e.g., `learned_weights_*.json`).
   - `plots/`: PNG figures.
 - `extract_interactions.py`: Computes interaction networks (Figure 7 support).
-- `README.md`: This file.
 
 ## Requirements
 
-- Python 3.8+
-- Dependencies: `numpy`, `matplotlib`, `scipy`
-
-Install via:
-
-```bash
-pip install -r requirements.txt
