@@ -1,3 +1,18 @@
+"""
+meditation_config.py
+
+This file contains configuration data for the meditation learning simulation, including definitions for 
+thoughtseeds, meditation states, dwell times, transition settings, attractors, agent parameters, and 
+interactions. These configurations are fundamental for modeling the dynamics of focused-attention meditation 
+and simulating novice and expert learners.
+
+### References:
+- Hasenkamp, W., Wilson-Mendenhall, C.D., Duncan, E., & Barsalou, L.W. (2012). "Mind wandering and attention during focused meditation: A dynamic framework." NeuroImage.
+- Lutz, A., Slagter, H.A., Dunne, J.D., & Davidson, R.J. (2008). "Attention regulation and monitoring in meditation." Trends in Cognitive Sciences.
+- Tang, Y.Y., Posner, M.I., & Rothbart, M.K. (2014). "Meditation improves self-regulation over the lifespan." Annals of the New York Academy of Sciences.
+- Delorme, A., & Brandmeyer, T. (2021). "Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms." Perspectives on Psychological Science.
+"""
+
 THOUGHTSEEDS = ['breath_focus', 'pain_discomfort', 'pending_tasks', 'self_reflection', 'equanimity']
 STATES = ['breath_control', 'mind_wandering', 'meta_awareness', 'redirect_breath']
 STATE_DWELL_TIMES = {
