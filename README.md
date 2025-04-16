@@ -25,7 +25,7 @@ This is flat repository structure, and hence I provide high level organization.
   - `learning_thoughtseeds_revised.py`: Core training logic (`RuleBasedHybridLearner`).
   - `visualize_weight_matrix.py`: Weight matrix visualization (Figure 4 support).
   - `learning_plots.py`: Plots for Figures 5 and 6.
-  - `extract_interactions.py`: Thoughtseed interaction network (Figure 7)
+  - `extract_interactions.py`: Thoughtseed interaction network (Figure 7). 
 - `simulation`: Code for running simulations (Section 4).
   - `run_simulation.py`: Executes simulation.
   - `meditation_states.py`: State definitions.
@@ -38,11 +38,8 @@ This is flat repository structure, and hence I provide high level organization.
   - `plots/`: PNG figures.
 - `extract_interactions.py`: Computes interaction networks (Figure 7 support).
 
-## Workflow to run the Simulation
-##1. Learning
-python learning_thoughtseeds_revised.py
-python extract_interactions.py
-##2. Simulation
-python run_simulation.py
-
-
+- Running Steps
+  1. learning_thoughtseeds_revised.py (Figure 5 and 6) 
+  2. visualize_weight_matrix.py (Figure 4)
+  3. extract_interactions.py (Figure 7)
+  4. run_simulation.py (Figure 8)
