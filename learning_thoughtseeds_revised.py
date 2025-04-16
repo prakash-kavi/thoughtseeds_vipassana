@@ -2,16 +2,40 @@
 learning_thoughtseeds_revised.py
 
 This file implements the Rule-Based Hybrid Learner for simulating thought dynamics in focused-attention 
-Vipassana meditation. The code provides a computational framework for modeling meditative states, 
-meta-awareness, and state transitions, inspired by concepts from neuroscience and meditation research.
+Vipassana meditation. The code provides a computational framework for modeling meditative states, meta-awareness, 
+and state transitions, inspired by concepts from neuroscience and meditation research.
 
-Key Concepts:
-- Thoughtseeds and Meditative States: Hierarchical modeling of thought dynamics and transitions between 
-  states such as breath_control, mind_wandering, meta_awareness, and redirect_breath.
-- Meta-awareness and Attentional Control: Simulation of meta-awareness as a self-monitoring mechanism 
-  that drives attentional reorientation.
-- State Transitions and Neurocognitive Mechanisms: Modeling the effects of distraction, fatigue, and 
-  natural vs. forced transitions in meditative states.
+### Key Concepts:
+- Thoughtseeds and Meditative States: Defines thoughtseeds (`breath_focus`, `pain_discomfort`, `pending_tasks`, `self_reflection`, `equanimity`) and their interactions 
+  with meditative states (`breath_control`, `mind_wandering`, `meta_awareness`, `redirect_breath`) using attractors and state-specific activation patterns.
+- Meta-awareness and Attentional Control: Models meta-awareness as a self-monitoring mechanism that regulates state dynamics.
+- State Transitions and Neurocognitive Mechanisms: Simulates natural and forced transitions between meditative states 
+  based on dynamics such as distraction, fatigue, and activation thresholds.
+
+### Inputs:
+- **Configuration**:
+  - `STATE_DWELL_TIMES`: Defines state-specific dwell times for novice and expert learners.
+  - `THOUGHTSEED_INTERACTIONS`: Specifies inhibitory and facilitative interactions between thoughtseeds.
+  - `THOUGHTSEED_AGENTS`: Contains parameters for thoughtseed responsiveness, decay rates, and recovery rates.
+  - `MEDITATION_STATE_THOUGHTSEED_ATTRACTORS`: Maps primary and secondary thoughtseeds to states.
+  - `NOISE_LEVEL`: Adds variability to simulate biological noise.
+
+- **Simulation Parameters**:
+  - `experience_level` (str): Specifies the learner's expertise level (`'novice'` or `'expert'`).
+  - `timesteps_per_cycle` (int): Number of timesteps for the simulation (default: 200).
+
+### Outputs:
+- **Generated Data** (Saved as JSON files in `./results/data/`):
+  1. `transition_stats_{experience_level}.json`: Contains statistics on state transitions (natural vs. forced, timestamps, etc.).
+  2. `learning_{experience_level}_history.json`: Records the history of states, meta-awareness, and thoughtseed activations.
+  3. `thoughtseed_params_{experience_level}.json`: Includes parameters such as baseline activations and interaction strengths.
+  4. `metacognition_params_{experience_level}.json`: Tracks meta-awareness thresholds, noise, and averaged meta-awareness by state.
+  5. `state_params_{experience_level}.json`: Contains state-specific parameters like dwell times and transition probabilities.
+  6. `learned_weights_{experience_level}.json`: Stores the learned weights for thoughtseeds and states.
+
+### Notes:
+- The generated data serves as input for visualization functions provided in `learning_plots.py`.
+- Ensure that the required output directories (`./results/data/` and `./results/plots/`) exist before running the simulation.
 
 Relevant Literature:
 1. Sandved-Smith, L.; Hesp, C.; Mattout, J.; Friston, K.; Lutz, A.; Ramstead, M.J.D. 
@@ -27,8 +51,6 @@ Relevant Literature:
    "Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms."
    Perspectives on Psychological Science, 2021. DOI: https://doi.org/10.1177/1745691620968776
 
-This implementation integrates these theoretical models into a computational simulation, enabling 
-investigation of emergent dynamics in meditation practices.
 """
 
 import numpy as np
