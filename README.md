@@ -36,5 +36,7 @@ Thoughtseeds act as attentional agents, competing to produce state transitions a
   - `plots/`: PNG figures.
 - `extract_interactions.py`: Computes interaction networks (Figure 7 support).
 
-## Requirements
+## Workflow to run the Simulation
+1. ## Learning
+2. ## Simulation
 
