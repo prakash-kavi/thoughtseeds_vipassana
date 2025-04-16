@@ -1,5 +1,4 @@
 # Thoughtseeds Framework: Vipassana Meditation Simulation
-
 This repository contains the Python implementation of the *Thoughtseeds Framework* for simulating thought dynamics in focused-attention Vipassana meditation, as described in:
 
 **"Thoughtseeds Framework: A Hierarchical and Agentic Framework for Investigating Thought Dynamics in Meditative States"**  
@@ -20,13 +19,14 @@ The framework models the four meditative states typically observed in Vipassana 
 Thoughtseeds act as attentional agents, competing to produce state transitions and generating outputs for **Figures 4-8** (weight matrices, activations, state evolution, interaction networks, hierarchical dynamics).
 
 ## Repository Structure
-
-- `learning/`: Code for training the model (Section 3 of the paper).
+This is flat repository structure, and hence I provide high level organization.
+- `meditation_config.py`: Configuration settings.
+- `learning`: Code for training the model (Section 3 of the paper).
   - `learning_thoughtseeds_revised.py`: Core training logic (`RuleBasedHybridLearner`).
-  - `learning_plots.py`: Plots for Figures 4-6.
-  - `meditation_config.py`: Configuration settings.
   - `visualize_weight_matrix.py`: Weight matrix visualization (Figure 4 support).
-- `simulation/`: Code for running simulations (Section 4).
+  - `learning_plots.py`: Plots for Figures 5 and 6.
+  - `extract_interactions.py`: Thoughtseed interaction network (Figure 7)
+- `simulation`: Code for running simulations (Section 4).
   - `run_simulation.py`: Executes simulation.
   - `meditation_states.py`: State definitions.
   - `metacognition.py`: Meta-awareness dynamics.
