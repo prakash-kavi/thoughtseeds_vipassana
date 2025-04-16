@@ -1,3 +1,32 @@
+"""
+extract_interactions.py
+
+This file extracts and analyzes thoughtseed interaction matrices for novice and expert learners in 
+focused-attention meditation simulations. It leverages training history to:
+- Identify causal relationships between thoughtseeds using Granger causality tests.
+- Compute interaction strengths based on statistical significance and correlation.
+- Incorporate domain-specific knowledge to refine interaction matrices.
+- Visualize results as interaction matrices (JSON) and network graphs (PNG).
+
+### Inputs:
+- `./results/data/learning_{experience_level}_history.json`: Contains the simulation history for a specific 
+  experience level (`novice` or `expert`). Key contents include:
+  - `state_history`: Sequence of meditation states over timesteps.
+  - `meta_awareness_history`: Meta-awareness levels recorded at each timestep.
+  - `dominant_ts_history`: The dominant thoughtseed at each timestep.
+  - `activations_history`: Activation levels of thoughtseeds at each timestep (used for causality analysis).
+  - `timesteps`: Total number of timesteps in the simulation.
+
+### Outputs:
+- `./results/data/thoughtseed_interactions_{experience_level}.json`: Contains the computed interaction matrix 
+  with causal relationships and interaction strengths for the specified experience level.
+- `./results/plots/thoughtseed_network_{experience_level}.png`: Network graph visualizing thoughtseed 
+  interactions for the specified experience level.
+
+### Relevant Literature:
+- Seth, A.K., Barrett, A.B., & Barnett, L. (2015). "Granger causality analysis in neuroscience and neuroimaging." Journal of Neuroscience.
+"""
+
 import numpy as np
 import json
 import matplotlib.pyplot as plt
