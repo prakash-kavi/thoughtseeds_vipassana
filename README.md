@@ -44,4 +44,5 @@ This is flat repository structure, and hence I provide high level organization.
   1. learning_thoughtseeds_revised.py (Figure 5 and 6) 
   2. visualize_weight_matrix.py (Figure 4)
   3. extract_interactions.py (Figure 7)
-  4. run_simulation.py (Figure 8)
+  4. run_simulation.py
+  5. visualize_simulation.py (Figure 8)
