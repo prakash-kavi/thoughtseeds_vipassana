@@ -14,10 +14,10 @@ Code Link - https://colab.research.google.com/drive/1IiMWXRF3tGbVh9Ywm0LuD_Lmurv
 - Christoff, K.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Andrews-Hanna, J.R. Mind-wandering as spontaneous thought: A dynamic framework. Nat. Rev. Neurosci. 2016, 17, 718–731. Available online: https://doi.org/10.1038/nrn.2016.113.
 - Andrews-Hanna, J.R.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Christoff, K. 13 The Neuroscience of Spontaneous Thought: An Evolving, Interdisciplinary Field. 2018 The Oxford handbook of spontaneous thought: Mind-wandering, creativity, and dreaming, 143.
 - van Vugt, M.; Taatgen, N.; Sackur, J.; Bastian, M. Modeling mind-wandering: A tool to better understand distraction. In Proceedings of the 13th International Conference on Cognitive Modeling, Groningen, The Netherlands, 9–11 April 2015; pp. 237–242. Available online:https://pure.rug.nl/ws/portalfiles/portal/16871364/vanVEtal15.pdf
-- Zamora-López, G., Russo, E., Gleiser, P. M., Zhou, C., & Kurths, J. (2011). Characterizing the complexity of brain and mind networks. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 369(1952), 3730-3747.
+- Zamora-López, G., Russo, E., Gleiser, P. M., Zhou, C., & Kurths, J. (2011). Characterizing the complexity of brain and mind networks. Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences, 369(1952), 3730-3747. https://doi.org/10.1098/rsta.2011.0121
 - Delorme, A.; Brandmeyer, T. Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms. Perspect. Psychol. Sci. 2021, 16, 39–66. https://doi.org/10.1177/1745691620917340.
-- Hasenkamp, W., & Barsalou, L. W. (2012). Effects of meditation experience on functional connectivity of distributed brain networks. Frontiers in human neuroscience, 6, 38.
-
+- Hasenkamp, W., & Barsalou, L. W. (2012). Effects of meditation experience on functional connectivity of distributed brain networks. Frontiers in human neuroscience, 6, 38. 
+https://doi.org/10.3389/fnhum.2012.00038
 Thoughtseeds act as attentional agents, competing to produce state transitions and generating outputs for **Figures 4-8** (weight matrices, activations, state evolution, interaction networks, hierarchical dynamics).
 
 ## Repository Structure
