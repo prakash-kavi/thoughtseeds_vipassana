@@ -1,3 +1,36 @@
+"""
+visualize_simulation.py
+
+This module visualizes the results of the Vipassana simulation by generating hierarchical 
+plots of meta-awareness, dominant thoughtseeds, and thoughtseed activations over time. 
+It processes simulation data for different user experience levels and saves the plots 
+as image files.
+
+Key Features:
+- Ensures the creation of necessary output directories.
+- Loads simulation results from serialized pickle files.
+- Generates three-level hierarchical plots:
+  - Level 3: Meta-awareness over time.
+  - Level 2: Dominant thoughtseeds over time.
+  - Level 1: Thoughtseed activations over time.
+- Saves the plots in a structured directory.
+
+Inputs:
+- Simulation results: Pickle files containing:
+  - 'timesteps': Total simulation timesteps.
+  - 'meta_awareness_history': List of meta-awareness values over time.
+  - 'state_history': List of meditation states over time.
+  - 'dominant_ts_history': List of dominant thoughtseeds at each timestep.
+  - 'activations_history': Activation levels of thoughtseeds over time.
+  - 'experience_level': The user's experience level ('novice' or 'expert').
+
+Outputs:
+- Plots saved as PNG files in the `./results/plots/` directory:
+  - `simulation_novice_hierarchy.png`
+  - `simulation_expert_hierarchy.png`
+"""
+
+
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
