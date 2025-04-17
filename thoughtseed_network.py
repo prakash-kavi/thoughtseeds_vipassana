@@ -58,11 +58,10 @@ The network tracks dominant thoughtseeds and global workspace competition, influ
 3. **Van Vugt, M.K.; Christoff, K.; & Schacter, D.L.**  
    - Provides insights into meditation-related dynamics, including the interplay of attentional focus and mind-wandering within neural systems.
 
-4. **Deco, G., et al. (2017)**     *"The Dynamics of Intrinsic Ignition: Multistability and Criticality in Cortical Networks."*  
+4. **Deco, G., et al. (2017)** *"The Dynamics of Intrinsic Ignition: Multistability and Criticality in Cortical Networks."*  
    **Journal of Neuroscience, 37(30), 7603–7618.**  
    - This framework explains how intrinsic ignition events (spontaneous neural activations) propagate through cortical networks, 
      influencing global workspace competition and transitions.  
-   - Strongly aligns with the thoughtseed activation and interaction matrix dynamics in this file.
 
 ### Integration:
 - Closely interacts with `meditation_states.py` for state transitions and `metacognition.py` for meta-awareness monitoring."""
