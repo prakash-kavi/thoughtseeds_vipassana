@@ -1,3 +1,24 @@
+"""
+metacognition.py
+
+This module defines the MetaCognitiveMonitor class, which provides meta-awareness tracking 
+and mind-wandering detection in the context of a Vipassana simulation. The class evaluates 
+meta-cognitive states, adapts based on user experience level, and integrates with the 
+ThoughtseedNetwork for real-time monitoring.
+
+Key Features:
+- Tracks and adjusts meta-awareness levels based on user states and habituation effects.
+- Detects mind-wandering and logs its occurrence with probabilistic mechanisms.
+- Handles state transitions and their impact on meta-awareness dynamics.
+
+Classes:
+- MetaCognitiveMonitor: Core class for meta-cognitive monitoring during the simulation.
+
+References:
+- Metzinger,  2003. Meta awareness paramter. opacity vs transparency
+- Sandved-Smith et al., 2021. Meta-cognition as a detection mechanism
+"""
+
 import os
 import sys
 import numpy as np
