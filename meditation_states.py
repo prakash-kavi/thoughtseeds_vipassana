@@ -1,3 +1,20 @@
+"""
+meditation_states.py
+
+This module defines the MeditationStateManager class, which manages the meditation states 
+during a Vipassana simulation. It tracks the current state, dwell times, and transitions 
+between states based on network activity and user experience level.
+
+Key Features:
+- Maintains session factors like mental clarity, distraction susceptibility, and fatigue.
+- Detects state transitions using dwell times, distraction levels, and other parameters.
+- Integrates with the ThoughtseedNetwork and MetaCognitiveMonitor for decision-making.
+- Logs state transitions and provides a history of meditation states.
+
+Classes:
+- MeditationStateManager: Core class for managing meditation states.
+"""
+
 import numpy as np
 from typing import Dict, List, Tuple, Optional, Any
 from param_manager import SimulationParameterManager
