@@ -1,3 +1,25 @@
+"""
+param_manager.py
+
+This file manages all parameters required for the meditation simulation. It loads learned data (e.g., 
+interaction matrices, weights, history) from pickle files and computes derived parameters like state dwell 
+times, agent-specific constants, and competition modifiers. The `SimulationParameterManager` class serves as 
+a centralized interface to provide these parameters to other modules in the simulation.
+
+### Key Responsibilities:
+- Load learned data for both novice and expert experience levels.
+- Compute state dwell times, activation statistics, and thoughtseed-specific parameters.
+- Provide interaction matrices and weights for initializing the thoughtseed network.
+- Summarize and print loaded data for verification.
+
+### Inputs:
+- Pickle files for interactions, weights, transition stats, and learning history (located in `./results/data`).
+
+### Outputs:
+- Derived parameters such as state dwell times, agent-specific constants, and competition modifiers.
+- Provides access to all loaded and computed parameters for use in other simulation modules.
+"""
+
 import os
 import pickle
 import numpy as np
