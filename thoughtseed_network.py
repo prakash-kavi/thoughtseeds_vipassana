@@ -48,19 +48,10 @@ The network tracks dominant thoughtseeds and global workspace competition, influ
 - Network-level features (e.g., distraction level, equanimity, meditation quality).
 
 ### Theoretical Foundations:
-1. **Mashour, G.A.; Roelfsema, P.; Changeux, J.P.; Dehaene, S.**  "Conscious Processing and the Global Neuronal Workspace Hypothesis."  
-   **Neuron, 2020, 105, 776–798.** DOI: [10.1016/j.neuron.2020.01.026](https://doi.org/10.1016/j.neuron.2020.01.026)
-   - Provides the theoretical foundation for workspace competition and dominant thoughtseeds.  
-
-2. **Christoff Lab**:  
-   - Explores non-linear dynamics of the default mode network (DMN) and its role in transitions between mind-wandering and meta-awareness.  
-
-3. **Van Vugt, M.K.; Christoff, K.; & Schacter, D.L.**  
-   - Provides insights into meditation-related dynamics, including the interplay of attentional focus and mind-wandering within neural systems.
-
-4. **Deco, G., et al. (2017)** *"The Dynamics of Intrinsic Ignition: Multistability and Criticality in Cortical Networks."*  
-   **Journal of Neuroscience, 37(30), 7603–7618.**  
-   - This framework explains how intrinsic ignition events (spontaneous neural activations) propagate through cortical networks, 
+1. **Mashour et al. 2020. - Provides the theoretical foundation for workspace competition and dominant thoughtseeds.  
+2. **Christoff Lab**: - Explores non-linear dynamics of the default mode network (DMN) and its role in transitions between mind-wandering and meta-awareness.  
+3. **Van Vugt et al., 2015 - Provides insights into meditation-related dynamics, including the interplay of attentional focus and mind-wandering within neural systems.
+4. **Deco, G., et al. (2017) - This framework explains how intrinsic ignition events (spontaneous neural activations) propagate through cortical networks, 
      influencing global workspace competition and transitions.  
 
 ### Integration:
