@@ -18,6 +18,7 @@ Code Link - https://colab.research.google.com/drive/1IiMWXRF3tGbVh9Ywm0LuD_Lmurv
 - Delorme, A.; Brandmeyer, T. Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms. Perspect. Psychol. Sci. 2021, 16, 39–66. https://doi.org/10.1177/1745691620917340.
 - Hasenkamp, W., & Barsalou, L. W. (2012). Effects of meditation experience on functional connectivity of distributed brain networks. Frontiers in human neuroscience, 6, 38. 
 https://doi.org/10.3389/fnhum.2012.00038
+
 Thoughtseeds act as attentional agents, competing to produce state transitions and generating outputs for **Figures 4-8** (weight matrices, activations, state evolution, interaction networks, hierarchical dynamics).
 
 ## Repository Structure
