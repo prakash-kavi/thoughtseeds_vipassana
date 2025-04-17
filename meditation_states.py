@@ -11,8 +11,12 @@ Key Features:
 - Integrates with the ThoughtseedNetwork and MetaCognitiveMonitor for decision-making.
 - Logs state transitions and provides a history of meditation states.
 
-Classes:
-- MeditationStateManager: Core class for managing meditation states.
+References:
+1. **Christoff Lab**:  
+   - Explores non-linear dynamics of the default mode network (DMN) and its role in transitions between mind-wandering and meta-awareness.  
+2. **Van Vugt, M.K.; Christoff, K.; & Schacter, D.L.**  
+   - Provides insights into meditation-related dynamics, including the interplay of attentional focus and mind-wandering within neural systems.
+3. Papers from Delorme, Hasenkamp, Tang and Lutz
 """
 
 import numpy as np
