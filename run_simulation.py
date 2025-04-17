@@ -1,3 +1,41 @@
+"""
+run_simulation.py
+
+This module orchestrates the Vipassana meditation simulation by coordinating various components 
+such as the ThoughtseedNetwork, MetaCognitiveMonitor, and MeditationStateManager. It manages 
+the simulation's lifecycle, collects data, and saves the results for further analysis or visualization.
+
+Key Features:
+- Initializes the simulation environment based on user experience level and duration.
+- Tracks meta-awareness, thoughtseed activations, dominant thoughtseed, and state transitions over time.
+- Saves simulation results in a structured format for visualization or further processing.
+
+Functions:
+- main(): Entry point for executing the simulation from the command line.
+
+Inputs:
+- Command-line arguments:
+  - Experience level: "novice" or "expert" (default: both levels).
+  - Simulation duration: Number of timesteps to simulate (default: 200 timesteps).
+
+Outputs:
+- Results saved as a pickle file in `./results/data/` directory:
+  - File format: `simulation_results_<experience_level>_<timestamp>.pkl`
+  - Contains:
+    - 'timesteps': Total number of timesteps.
+    - 'experience_level': User's experience level.
+    - 'meta_awareness_history': List of meta-awareness values over time.
+    - 'activations_history': Activation levels of thoughtseeds over time.
+    - 'state_history': List of meditation states over time.
+    - 'dominant_ts_history': List of dominant thoughtseeds at each timestep.
+    - 'thoughtseeds': List of thoughtseeds simulated.
+
+Notes:
+- The `main()` function also creates the required output directories if they do not exist.
+- Visualize_simulation.py is run next.
+"""
+
+
 import os
 import sys
 import numpy as np
