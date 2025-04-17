@@ -1,3 +1,72 @@
+"""
+thoughtseed_network.py
+
+This file implements the core dynamics of the thoughtseed network, a system of interconnected thoughtseed 
+agents representing cognitive processes (e.g., `breath_focus`, `pain_discomfort`, `self_reflection`). 
+Each agent's activation evolves over time based on interactions, state-specific parameters, and noise. 
+The network tracks dominant thoughtseeds and global workspace competition, which influence meditation 
+state transitions.
+
+### Key Responsibilities:
+- Initialize thoughtseed agents with parameters provided by the `SimulationParameterManager`.
+- Update thoughtseed activations based on state dynamics, interactions, and noise.
+- Simulate competitive dynamics within the global workspace and identify dominant thoughtseeds.
+- Provide network-level features (e.g., distraction level, meditation quality) for state management.
+
+### Inputs:
+- Parameters from `SimulationParameterManager`, such as interaction matrices, state responses, and noise levels.
+- State-specific activations and external factors (e.g., meta-awareness, focused time).
+
+### Outputs:
+- Current activations of all thoughtseeds.
+- Dominant thoughtseed in the global workspace at each timestep.
+- Network-level features like distraction level, equanimity, and meditation quality.
+
+### Integration:
+- This file interacts closely with `meditation_states.py` for state management and `metacognition.py` for meta-awareness monitoring.
+"""
+thoughtseed_network.py
+
+This file implements the core dynamics of the thoughtseed network, a system of interconnected thoughtseed 
+agents representing cognitive processes (e.g., `breath_focus`, `pain_discomfort`, `self_reflection`). 
+Each agent's activation evolves over time based on state-specific parameters, interactions, and noise. 
+The network tracks dominant thoughtseeds and global workspace competition, influencing meditation state transitions.
+
+### Key Responsibilities:
+- Initialize thoughtseed agents with parameters from `SimulationParameterManager`.
+- Update thoughtseed activations dynamically based on interactions, meditation states, and meta-awareness.
+- Simulate competitive dynamics within the global workspace and track the dominant thoughtseed.
+- Provide network-level features such as distraction level and meditation quality for state management.
+
+### Inputs:
+- Parameters from `SimulationParameterManager` (e.g., interaction matrices, state responses, noise levels).
+- State-specific activations and external factors (e.g., meta-awareness, focused time).
+
+### Outputs:
+- Current activations of all thoughtseeds.
+- Dominant thoughtseed in the global workspace at each timestep.
+- Network-level features (e.g., distraction level, equanimity, meditation quality).
+
+### Theoretical Foundations:
+1. **Mashour, G.A.; Roelfsema, P.; Changeux, J.P.; Dehaene, S.**  "Conscious Processing and the Global Neuronal Workspace Hypothesis."  
+   **Neuron, 2020, 105, 776–798.** DOI: [10.1016/j.neuron.2020.01.026](https://doi.org/10.1016/j.neuron.2020.01.026)
+   - Provides the theoretical foundation for workspace competition and dominant thoughtseeds.  
+
+2. **Christoff Lab**:  
+   - Explores non-linear dynamics of the default mode network (DMN) and its role in transitions between mind-wandering and meta-awareness.  
+
+3. **Van Vugt, M.K.; Christoff, K.; & Schacter, D.L.**  
+   - Provides insights into meditation-related dynamics, including the interplay of attentional focus and mind-wandering within neural systems.
+
+4. **Deco, G., et al. (2017)**     *"The Dynamics of Intrinsic Ignition: Multistability and Criticality in Cortical Networks."*  
+   **Journal of Neuroscience, 37(30), 7603–7618.**  
+   - This framework explains how intrinsic ignition events (spontaneous neural activations) propagate through cortical networks, 
+     influencing global workspace competition and transitions.  
+   - Strongly aligns with the thoughtseed activation and interaction matrix dynamics in this file.
+
+### Integration:
+- Closely interacts with `meditation_states.py` for state transitions and `metacognition.py` for meta-awareness monitoring."""
+
 import numpy as np
 from typing import Dict, List, Tuple, Optional, Any
 from param_manager import SimulationParameterManager
