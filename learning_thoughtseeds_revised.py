@@ -38,18 +38,9 @@ and state transitions, inspired by concepts from neuroscience and meditation res
 - Ensure that the required output directories (`./results/data/` and `./results/plots/`) exist before running the simulation.
 
 Relevant Literature:
-1. Sandved-Smith, L.; Hesp, C.; Mattout, J.; Friston, K.; Lutz, A.; Ramstead, M.J.D. 
-   "Towards a Computational Phenomenology of Mental Action: Modelling Meta-awareness and 
-   Attentional Control with Deep Active Inference." Frontiers in Psychology, 2021.
-   DOI: https://doi.org/10.3389/fpsyg.2021.749432
-
-2. Christoff, K.; Irving, Z.C.; Fox, K.C.R.; Spreng, R.N.; Andrews-Hanna, J.R. 
-   "Mind-wandering as spontaneous thought: A dynamic framework." 
-   Nature Reviews Neuroscience, 2016. DOI: https://doi.org/10.1038/nrn.2016.113
-
-3. Delorme, A.; Brandmeyer, T. 
-   "Meditation and the Wandering Mind: A Theoretical Framework of Underlying Neurocognitive Mechanisms."
-   Perspectives on Psychological Science, 2021. DOI: https://doi.org/10.1177/1745691620968776
+1. Sandved-Smith et al., 2021. - 3 level hierachical framework
+2. Christoff lab papers - Mind wandering dynamics
+3. Delorme & Brandmeyer, 2021. Mind wandering dynamics
 
 """
 
