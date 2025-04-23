@@ -54,7 +54,7 @@ class MeditationStateManager:
         print(f"Session factors: {self.session_factors}")
     
     def update(self, network: ThoughtseedNetwork, metacognition: MetaCognitiveMonitor, timestep: int) -> bool:
-        """Update meditation state based on network activations"""
+        """Update meditation state based on network activations and met-awareness"""
         # First check for mind-wandering detection
         detection = metacognition.detect_mind_wandering(
             network, 
