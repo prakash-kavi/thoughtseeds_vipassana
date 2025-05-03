@@ -81,22 +81,26 @@ These levels are interconnected through bidirectional feedback, ensuring that ch
 
 ## Learning Mechanisms: Adapting Through Experience
 
-Learning mechanisms adapt the framework’s weights, interaction patterns, and transition probabilities based on simulated meditation, enabling **self-organization**. These mechanisms model how meditative expertise develops over time, allowing the system to simulate the progressive refinement experienced by practitioners in real-life Vipassana meditation.
+The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically adjust weights, interaction patterns, and transition probabilities based on simulated meditation experiences. These mechanisms are inspired by the way meditative practitioners refine their cognitive processes through repeated practice and feedback. The framework’s learning algorithms enable **self-organization**, allowing the system to model the nuanced progression from novice to expert meditators.
 
-### Weight Initialization and Updates
-- **Implementation**: In `learning_thoughtseeds_revised.py`, the `RuleBasedHybridLearner` class initializes weights in its `__init__` method:
-  ```python
-  self.weights = np.zeros((self.num_thoughtseeds, len(self.states)))
-  for ts_idx, ts in enumerate(self.thoughtseeds):
-      for state_idx, state in enumerate(self.states):
-          attrs = MEDITATION_STATE_THOUGHTSEED_ATTRACTORS[state]
-          if ts in attrs["primary"]:
-              self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.9, 1.1)
-          elif ts in attrs["secondary"]:
-              self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.7, 0.9)
-          else:
-              self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
+### Key Features of Learning Mechanisms
 
+1. **Dynamic Weight Adaptation**:
+   - The framework adapts the interaction weights between thoughtseeds and meditative states based on simulated experiences.
+   - Weights are initialized and updated using a hybrid rule-based and stochastic approach, ensuring both structure and flexibility.
+   - Implementation is found in `learning_thoughtseeds_revised.py`, specifically within the `RuleBasedHybridLearner` class.
+
+   ```python
+   self.weights = np.zeros((self.num_thoughtseeds, len(self.states)))
+   for ts_idx, ts in enumerate(self.thoughtseeds):
+       for state_idx, state in enumerate(self.states):
+           attrs = MEDITATION_STATE_THOUGHTSEED_ATTRACTORS[state]
+           if ts in attrs["primary"]:
+               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.9, 1.1)
+           elif ts in attrs["secondary"]:
+               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.7, 0.9)
+           else:
+               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
 ## Simulation Mechanisms: Dynamic Interactions Driving Emergence
 
 Simulation mechanisms in `thoughtseed_network.py`, `metacognition.py`, and `run_simulation.py` drive the dynamics that produce emergent states and transitions.
