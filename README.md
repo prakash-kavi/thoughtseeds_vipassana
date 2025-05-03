@@ -50,7 +50,7 @@ This is flat repository structure, and hence I provide high level organization.
 
 # Self-Organization and Emergence in the Thoughtseeds Framework
 
-The Thoughtseeds Framework models thought dynamics during Vipassana meditation, relying on self-organization and emergence to produce complex cognitive behaviors from simple, local interactions. This section details the **learning mechanisms** and **simulation mechanisms**, linking them to their implementations in the GitHub repository files. It explains how these components enable emergent meditative states and transitions, supported by code references and intuitive explanations.
+The Thoughtseeds Framework models thought dynamics during Vipassana meditation, relying on self-organization and emergence to produce complex cognitive behaviors from simple, local interactions. This **learning mechanisms** and **simulation mechanisms** are linked to their implementations. It explains how these components enable emergent meditative states and transitions.
 
 ---
 
