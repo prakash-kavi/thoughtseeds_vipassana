@@ -139,16 +139,37 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
       ```
      - **Role**: Supports emergent transitions by modeling natural shifts in meditative states, such as moving from `mind_wandering` to `meta_awareness` without hardcoded rules.
 
-5. Feedback-Driven Adaptation  
-   - **Iterative Refinement**: Simulated meditation sessions provide feedback, guiding updates to weights, interactions, and transitions.  
-   - **Learning from Outcomes**: Patterns of success (e.g., sustained `meta_awareness`) inform adjustments to optimize meditative dynamics.  
-   - **Role**: Ensures that the framework evolves based on experience, mirroring the iterative nature of real-world meditation practice.
+4. **Feedback-Driven Adaptation**  
+   - **Iterative Refinement**:  
+     Simulated meditation sessions provide feedback loops, enabling iterative updates to weights, interactions, and transitions.  
+   - **Learning from Outcomes**:  
+     Patterns of success, such as sustained `meta_awareness` states, inform adjustments to optimize meditative dynamics.  
+   - **Implementation**:  
+     Feedback mechanisms dynamically refine the framework during training and simulation phases. The `train` method in `learning_thoughtseeds_revised.py` integrates feedback to adapt parameters over multiple iterations:  
+     ```python
+     for session in simulated_sessions:
+         feedback = evaluate_session(session)
+         adjust_weights(feedback)
+         refine_transitions(feedback)
+     ```
+   - **Role**:  
+     Ensures the framework evolves based on experiential feedback, mirroring the trial-and-error nature of real-world meditation practice.
 
-6. Expertise-Dependent Learning  
-   - **Progression Modeling**: The framework adjusts learning parameters to reflect expertise levels, from novice to expert meditators.  
-   - **Behavioral Differences**: Novices may exhibit weaker inhibition of distractions like `pending_tasks`, whereas experts demonstrate stronger, consistent suppression.  
-   - **Role**: Captures the progressive refinement of cognitive control and attentional focus through practice.
-
+5. **Expertise-Dependent Learning**  
+   - **Progression Modeling**:  
+     The framework adjusts learning parameters to simulate progression from novice to expert meditators.  
+   - **Behavioral Differences**:  
+     Novices exhibit weaker inhibition of distractions such as `pending_tasks`, while experts demonstrate stronger and more consistent suppression.  
+   - **Implementation**:  
+     Expertise levels are modeled through parameter scaling and experience-based adjustments in `learning_thoughtseeds_revised.py`. For example:  
+     ```python
+     if experience_level == "novice":
+         inhibition_strength = BASE_INHIBITION * 0.5
+     elif experience_level == "expert":
+         inhibition_strength = BASE_INHIBITION * 1.5
+     ```
+   - **Role**:  
+     Captures the progressive refinement of cognitive control and attentional focus, enabling realistic simulations of meditative expertise.
 7. Stochasticity and Variability  
    - **Simulating Real-World Variability**: Controlled randomness is introduced to mimic individual differences and real-world inconsistencies.  
    - **Exploration vs. Exploitation**: Noise fosters exploration of novel state transitions while reinforcing successful patterns.  
