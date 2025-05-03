@@ -170,16 +170,37 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
      ```
    - **Role**:  
      Captures the progressive refinement of cognitive control and attentional focus, enabling realistic simulations of meditative expertise.
-7. Stochasticity and Variability  
-   - **Simulating Real-World Variability**: Controlled randomness is introduced to mimic individual differences and real-world inconsistencies.  
-   - **Exploration vs. Exploitation**: Noise fosters exploration of novel state transitions while reinforcing successful patterns.  
-   - **Role**: Encourages robustness and diversity in learning, preventing premature convergence on suboptimal solutions.
+     
+6. **Stochasticity and Variability**  
+   - **Simulating Real-World Variability**:  
+     Controlled randomness is introduced to replicate individual differences and real-world inconsistencies during meditation.  
+   - **Exploration vs. Exploitation**:  
+     Noise facilitates the exploration of novel state transitions while reinforcing successful meditative patterns. This balance prevents the framework from converging prematurely on suboptimal solutions.  
+   - **Implementation**:  
+     Found in `learning_thoughtseeds_revised.py`, stochastic adjustments are incorporated into weight adaptation, ensuring diversity in learning outcomes. For example:  
+     ```python
+     self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(lower_bound, upper_bound)
+     ```
+   - **Role**:  
+     Promotes robustness and adaptability in learning by simulating variability in meditation experiences.
 
-8. Integration of Domain Knowledge  
-   - **Enhancing Learning**: Expert insights into meditation practices and cognitive dynamics refine the framework’s learning mechanisms.  
-   - **Validated Interactions**: Causal relationships are supplemented with theoretical and empirical knowledge to ensure alignment with meditative principles.  
-   - **Role**: Ensures that learned patterns remain grounded in established scientific and meditative frameworks.
-   
+7. **Integration of Domain Knowledge**  
+   - **Enhancing Learning**:  
+     Expert insights into meditation practices and cognitive dynamics are embedded to refine the framework's learning mechanisms.  
+   - **Validated Interactions**:  
+     Causal relationships between thoughtseeds are supplemented with theoretical and empirical knowledge to ensure alignment with meditative principles.  
+   - **Implementation**:  
+     Found in `extract_interactions.py`, the `supplement_domain_knowledge` function enriches interaction matrices with domain expertise:  
+     ```python
+     def supplement_domain_knowledge(interactions: Dict[str, Dict[str, float]], experience_level: str):
+         for ts, connections in interactions.items():
+             if ts in DOMAIN_KNOWLEDGE_PRIORITIES:
+                 prioritized_weights = DOMAIN_KNOWLEDGE_PRIORITIES[ts][experience_level]
+                 for related_ts, weight in prioritized_weights.items():
+                     connections[related_ts] += weight
+     ```
+   - **Role**:  
+     Ensures that learned patterns remain grounded in established scientific and meditative frameworks, enabling the framework to reflect realistic dynamics.
 ## Simulation Mechanisms: Dynamic Interactions Driving Emergence
 
 Simulation mechanisms in `thoughtseed_network.py`, `metacognition.py`, and `run_simulation.py` drive the dynamics that produce emergent states and transitions.
