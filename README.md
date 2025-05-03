@@ -390,7 +390,7 @@ The Thoughtseeds Framework is modular, with specific components handling differe
 The Thoughtseeds Framework is designed to mimic the natural dynamics of meditation, blending principles of self-organization, emergence, and adaptive learning. Here’s how intuition and design principles are embedded in the framework:
 
 1. **Agent-Based Modeling**:  
-   - Thoughtseeds act as independent agents, competing for attention and driving state transitions. This mirrors the real-world cognitive process where various thoughts vie for dominance in the mind.  
+   - Thoughtseeds act as dynamic attentional agents, competing for attention and driving state transitions. This mirrors the real-world cognitive process where various thoughts vie for dominance in the mind. They are not fully independent, but can be said to have **"dependent-origination"** as aoften described as a core meditation philosophy.  
    - Example: Local interactions among thoughtseeds in `thoughtseed_network.py` create emergent attention dynamics.
 
 2. **Hierarchical Structure**:  
