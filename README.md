@@ -85,10 +85,10 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
 
 ### Key Features of Learning Mechanisms
 
-1. **Dynamic Weight Adaptation**  
-   - **Primary Attractors**: Thoughtseeds most relevant to a meditative state are given higher initial weights.  
-   - **Secondary Attractors**: Thoughtseeds indirectly related to a meditative state are assigned moderate weights.  
-   - **Stochastic Adjustments**: Random perturbations within defined ranges simulate individual variability and learning uncertainty.  
+1. **Dynamic Weight Adaptation**:  
+   **Primary Attractors**: Thoughtseeds most relevant to a meditative state are given higher initial weights.  
+   **Secondary Attractors**: Thoughtseeds indirectly related to a meditative state are assigned moderate weights.  
+   **Stochastic Adjustments**: Random perturbations within defined ranges simulate individual variability and learning uncertainty.  
 
    - The framework adapts the interaction weights between thoughtseeds and meditative states based on simulated experiences.
    - Weights are initialized and updated using a hybrid rule-based and stochastic approach, ensuring both structure and flexibility.
