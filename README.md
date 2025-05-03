@@ -78,9 +78,10 @@ The Thoughtseeds Framework is built upon a hierarchical structure that facilitat
    - Implemented in `metacognition.py`, where the `MetaCognitiveMonitor.update` method modulates meta-awareness based on state and habituation.
 
 These levels are interconnected through bidirectional feedback, ensuring that changes in one level influence the others. This hierarchical design enables the framework to model meditative states and transitions realistically and adaptively.
+
 ## Learning Mechanisms: Adapting Through Experience
 
-Learning mechanisms adapt the framework’s weights and interactions based on simulated meditation, enabling **self-organization**. These mechanisms are primarily implemented in `learning_thoughtseeds_revised.py` and `extract_interactions.py`.
+Learning mechanisms adapt the framework’s weights, interaction patterns, and transition probabilities based on simulated meditation, enabling **self-organization**. These mechanisms model how meditative expertise develops over time, allowing the system to simulate the progressive refinement experienced by practitioners in real-life Vipassana meditation.
 
 ### Weight Initialization and Updates
 - **Implementation**: In `learning_thoughtseeds_revised.py`, the `RuleBasedHybridLearner` class initializes weights in its `__init__` method:
@@ -95,30 +96,6 @@ Learning mechanisms adapt the framework’s weights and interactions based on si
               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.7, 0.9)
           else:
               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
-
-### Interaction Matrix Extraction
-- **Implementation**: In `extract_interactions.py`, the `extract_interaction_matrix` function computes interactions using Granger causality:
-  ```python
-  def extract_interaction_matrix(experience_level: str) -> Dict[str, Dict[str, float]]:
-      activations_array = load_training_data(experience_level)
-      causal_pairs = analyze_granger_causality(activations_array)
-      interactions = calculate_interaction_strengths(activations_array, causal_pairs)
-      supplement_domain_knowledge(interactions, experience_level)
-      return interactions
-  ```
-- **Role**: This identifies causal relationships (e.g., `breath_focus` inhibiting `pending_tasks`), enabling self-organized inhibition patterns that differ by expertise.
-
-### Transition Matrix
-- **Implementation**: In `learning_thoughtseeds_revised.py`, the `train` method builds the transition matrix:
-  ```python
-  self.transition_counts[current_state][next_state] += 1
-  ```
-  Probabilities are later computed from these counts in the output `state_params`.
-- **Role**: Tracks natural state shifts, supporting emergent transitions without hardcoded sequences.
-
-**Adaptive Learning**: These mechanisms learn from simulated data, allowing flexible, experience-dependent self-organization.
-
----
 
 ## Simulation Mechanisms: Dynamic Interactions Driving Emergence
 
