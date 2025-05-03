@@ -305,25 +305,114 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
 
 ---
 
-These features collectively drive the dynamics of the Thoughtseeds Framework, enabling it to simulate meditation as an emergent, adaptive process that mirrors real-world cognitive states.
+**These features collectively drive the dynamics of the Thoughtseeds Framework, enabling it to simulate meditation as an emergent, adaptive process that mirrors real-world cognitive states.**
+
 ---
 
 ## Why Emergent Phenomena, Not Hard-Coded Rules
 
-- **Dynamic States**: States arise from activation patterns (e.g., high `pain_discomfort` triggers `mind_wandering`).
-- **Flexible Transitions**: Shifts depend on runtime dynamics, not fixed logic.
-- **Expertise Variation**: Novices and experts differ due to learned parameters, not separate code paths.
+- **Dynamic Adaptability**:  
+  The Thoughtseeds Framework models meditation as a dynamic process where states (e.g., `mind_wandering`, `meta_awareness`) naturally emerge from the interactions between thoughtseeds, environmental inputs, and meta-awareness. This approach avoids rigid, predefined logic, allowing the simulation to adapt to a variety of scenarios and individual differences.  
+
+- **Realistic Cognitive Dynamics**:  
+  Meditation is not a linear or deterministic process. Distractions (e.g., `pending_tasks`) and refocusing efforts (e.g., `breath_control`) occur unpredictably, influenced by internal states and external stimuli. The framework captures this complexity by allowing higher-order states to emerge through activation dynamics and feedback loops, rather than enforcing strict state transitions.
+
+- **Expertise Variation**:  
+  Novices and experts exhibit distinct cognitive patterns during meditation. Novices are more prone to distractions, while experts show stronger inhibition of irrelevant thoughts. By relying on emergent phenomena, the framework naturally differentiates these behaviors through learned parameters, removing the need for separate code paths for novices and experts.
+
+- **Examples in the Code**:  
+  Emergent phenomena are evident in the following implementations:
+  - **Activation Dynamics**: Thoughtseed interactions, influenced by weights and noise, drive competitive dynamics, producing emergent attention shifts.  
+    ```python
+    final_target = base_targets[ts] + interaction_effects.get(ts, 0.0) + np.random.normal(0, noise_variance)
+    ```
+  - **State Transitions**: Transition probabilities evolve based on learned patterns, reflecting real-world shifts in meditative states.  
+    ```python
+    for state in self.transition_counts:
+        total_transitions = sum(self.transition_counts[state].values())
+        self.transition_probs[state] = {
+            next_state: count / total_transitions
+            for next_state, count in self.transition_counts[state].items()
+        }
+    ```
+
+- **Why This Matters**:  
+  Relying on emergent phenomena ensures that the simulation mirrors the fluid, non-deterministic nature of meditation, making it robust, scalable, and applicable across diverse use cases.
 
 ---
 
 ## Locating the Logic
 
-- **Self-Organization**: `thoughtseed_network.py` (`update`).
-- **Learning**: `learning_thoughtseeds_revised.py` (`__init__`, `train`), `extract_interactions.py` (`extract_interaction_matrix`).
-- **Emergence**: `run_simulation.py` (`run`), integrating network and metacognition.
+The Thoughtseeds Framework is modular, with specific components handling different aspects of self-organization, learning, and emergence. Here’s where the critical logic resides:
+
+1. **Self-Organization**:  
+   - File: `thoughtseed_network.py`  
+   - Key Method: `ThoughtseedNetwork.update`  
+   - Role: Manages local interactions and activations among thoughtseeds, fostering emergent patterns without centralized control.
+     ```python
+     def update(self, meditation_state: str, meta_awareness: float, ...):
+         ...
+         interaction_effects[ts] = sum(strength * current_activations[ts] * 0.1 for other_ts, strength in self.interactions[ts].get("connections", {}).items())
+     ```
+
+2. **Learning Mechanisms**:  
+   - File: `learning_thoughtseeds_revised.py`  
+   - Key Class: `RuleBasedHybridLearner`  
+   - Role: Implements adaptive mechanisms to adjust weights, extract causal interactions, and refine transition probabilities based on feedback.  
+     ```python
+     feedback = evaluate_session(session)
+     adjust_weights(feedback)
+     refine_transitions(feedback)
+     ```
+
+3. **Emergence**:  
+   - File: `run_simulation.py`  
+   - Key Method: `MeditationSimulation.run`  
+   - Role: Orchestrates the interplay of thoughtseed activations, meta-awareness modulation, and state transitions, producing higher-order emergent behaviors.
+     ```python
+     self.network.update(current_state, meta_awareness, ...)
+     self.metacognition.update(self.network, current_state, dwell_time, t)
+     self.state_manager.update(self.network, self.metacognition, t)
+     ```
+
+4. **Meta-Awareness Regulation**:  
+   - File: `metacognition.py`  
+   - Key Method: `MetaCognitiveMonitor.update`  
+   - Role: Modulates meta-awareness based on habituation, state, and noise, influencing state transitions and focus dynamics.
+     ```python
+     final_awareness = max(0.4, min(1.0, awareness_with_habituation + np.random.normal(0, meta_variance)))
+     ```
 
 ---
 
 ## Intuition and Design
 
-The framework mimics meditation: thoughtseeds compete, meta-awareness modulates, and states emerge organically. By emphasizing adaptive learning and dynamic interactions, it models cognitive processes realistically, prioritizing emergence over rigid rules.
+The Thoughtseeds Framework is designed to mimic the natural dynamics of meditation, blending principles of self-organization, emergence, and adaptive learning. Here’s how intuition and design principles are embedded in the framework:
+
+1. **Agent-Based Modeling**:  
+   - Thoughtseeds act as independent agents, competing for attention and driving state transitions. This mirrors the real-world cognitive process where various thoughts vie for dominance in the mind.  
+   - Example: Local interactions among thoughtseeds in `thoughtseed_network.py` create emergent attention dynamics.
+
+2. **Hierarchical Structure**:  
+   - The framework integrates three levels—**knowledge domains**, **thoughtseed networks**, and **meta-cognition**—to model meditation as a multiscale process.  
+   - Example: Knowledge domains define attractors for thoughtseeds, while meta-cognition modulates their competition, creating a bidirectional feedback loop.
+
+3. **Emergence Over Determinism**:  
+   - The framework avoids hardcoded rules, instead allowing states and transitions to emerge from interactions and learned parameters. This approach captures the fluidity and unpredictability of meditation.  
+   - Example: State transitions in `run_simulation.py` are driven by dynamic probabilities, not predefined sequences.
+
+4. **Adaptation and Feedback**:  
+   - Simulated meditation sessions provide feedback that refines the framework’s parameters, ensuring continuous improvement and alignment with real-world meditation dynamics.  
+   - Example: Feedback-driven adaptation in `learning_thoughtseeds_revised.py` adjusts weights and transitions based on session outcomes.
+
+5. **Stochasticity for Realism**:  
+   - Controlled randomness is introduced to simulate variability in meditation experiences, such as distractions or fluctuating focus levels.  
+   - Example: Noise in `thoughtseed_network.py` influences activations, fostering robustness and diversity in emergent behaviors.
+
+6. **Scalability and Flexibility**:  
+   - The modular design allows the framework to scale across different meditation practices and adapt to varying expertise levels.  
+   - Example: Expertise-dependent learning in `learning_thoughtseeds_revised.py` differentiates behaviors for novices and experts.
+
+---
+
+By combining these principles, the Thoughtseeds Framework offers a powerful and realistic simulation of meditative states, capable of capturing the nuanced dynamics of cognitive processes during meditation.
