@@ -79,6 +79,8 @@ The Thoughtseeds Framework is built upon a hierarchical structure that facilitat
 
 These levels are interconnected through bidirectional feedback, ensuring that changes in one level influence the others. This hierarchical design enables the framework to model meditative states and transitions realistically and adaptively.
 
+---
+
 ## Learning Mechanisms: Adapting Through Experience
 
 The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically adjust weights, interaction patterns, and transition probabilities based on simulated meditation experiences. These mechanisms are inspired by the way meditative practitioners refine their cognitive processes through repeated practice and feedback. The framework’s learning algorithms enable **self-organization**, allowing the system to model the nuanced progression from novice to expert meditators.
@@ -215,44 +217,95 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
 ---
 ## Simulation Mechanisms: Dynamic Interactions Driving Emergence
 
-Simulation mechanisms in `thoughtseed_network.py`, `metacognition.py`, and `run_simulation.py` drive the dynamics that produce emergent states and transitions.
+### Key Features of Simulation Mechanisms
 
-### Activation Dynamics
-- **Implementation**: In `thoughtseed_network.py`, the `ThoughtseedNetwork.update` method updates activations:
-  ```python
-  def update(self, meditation_state: str, meta_awareness: float, ...):
-      base_targets = self._get_state_activations(meditation_state)
-      interaction_effects = {}
-      for ts in self.agents:
-          interaction_effects[ts] = sum(strength * current_activations[ts] * 0.1 for other_ts, strength in self.interactions[ts].get("connections", {}).items())
-      for ts, agent in self.agents.items():
-          final_target = base_targets[ts] + interaction_effects.get(ts, 0.0)
-          agent.update(final_target, coherent_noise.get(ts, 0.0))
-  ```
-- **Role**: Activations evolve based on state targets, interactions, and noise, fostering competitive dynamics that lead to emergent attention shifts.
+1. **Activation Dynamics**  
+   - **Description**:  
+     Activation dynamics govern the competition among thoughtseeds based on their interaction weights, state targets, and noise. This drives the shifts in attention and focus during meditation.  
+   - **Implementation**:  
+     Found in `thoughtseed_network.py`, the `ThoughtseedNetwork.update` method calculates the activation effects of competing thoughtseeds:
+     ```python
+     def update(self, meditation_state: str, meta_awareness: float, ...):
+         base_targets = self._get_state_activations(meditation_state)
+         interaction_effects = {}
+         for ts in self.agents:
+             interaction_effects[ts] = sum(strength * current_activations[ts] * 0.1 for other_ts, strength in self.interactions[ts].get("connections", {}).items())
+         for ts, agent in self.agents.items():
+             final_target = base_targets[ts] + interaction_effects.get(ts, 0.0)
+             agent.update(final_target, coherent_noise.get(ts, 0.0))
+     ```
+   - **Role**:  
+     This mechanism enables emergent thought dynamics by simulating competitive interactions among thoughtseeds, influenced by both local interactions and global states.
 
-### Meta-Awareness Modulation
-- **Implementation**: In `metacognition.py`, the `MetaCognitiveMonitor.update` method adjusts meta-awareness:
-  ```python
-  def update(self, network: ThoughtseedNetwork, state: str, current_dwell: int, timestep: int) -> float:
-      base_awareness = self._calculate_base_awareness(state)
-      awareness_with_habituation = base_awareness * (1.0 - self.habituation * 0.3)
-      final_awareness = max(0.4, min(1.0, awareness_with_habituatio
-n + np.random.normal(0, meta_variance)))
-      return final_awareness
-  ```
-- **Role**: Meta-awareness influences thoughtseed competition, contributing to state emergence (e.g., detecting `mind_wandering`).
+2. **Meta-Awareness Modulation**  
+   - **Description**:  
+     Meta-awareness acts as a regulatory mechanism, adjusting the influence of distractions and sustaining meditative focus. It dynamically changes based on habituation, state, and noise.  
+   - **Implementation**:  
+     Found in `metacognition.py`, the `MetaCognitiveMonitor.update` method modulates awareness based on external and internal feedback:
+     ```python
+     def update(self, network: ThoughtseedNetwork, state: str, current_dwell: int, timestep: int) -> float:
+         base_awareness = self._calculate_base_awareness(state)
+         awareness_with_habituation = base_awareness * (1.0 - self.habituation * 0.3)
+         final_awareness = max(0.4, min(1.0, awareness_with_habituation + np.random.normal(0, meta_variance)))
+         return final_awareness
+     ```
+   - **Role**:  
+     Regulates the balance between distractions and focused attention, contributing to the emergence of higher-order meditative states.
 
-### State Transitions
-- **Implementation**: In `run_simulation.py`, the `MeditationSimulation.run` method orchestrates transitions via `MeditationStateManager.update`:
-  ```python
-  self.state_manager.update(self.network, self.metacognition, t)
-  ```
-  This relies on `thoughtseed_network.py`’s features (e.g., `distraction_level`) and `metacognition.py`’s detection.
-- **Role**: Transitions emerge from activation patterns and meta-awareness, not predefined rules.
+3. **State Transitions**  
+   - **Description**:  
+     State transitions are driven by emergent patterns of thoughtseed activations and meta-awareness, rather than predefined rules. This ensures flexibility and adaptability in the simulation.  
+   - **Implementation**:  
+     Found in `run_simulation.py`, the `MeditationSimulation.run` method orchestrates state transitions by invoking the `MeditationStateManager.update` method:
+     ```python
+     self.state_manager.update(self.network, self.metacognition, t)
+     ```
+     The state manager leverages `thoughtseed_network.py` features (e.g., distraction levels) and `metacognition.py` meta-awareness detection to guide transitions.  
+   - **Role**:  
+     Enables emergent transitions between states like `mind_wandering` and `meta_awareness`, reflecting real-world meditation dynamics.
 
-**Emergence**: The `run` method in `run_simulation.py` iterates these dynamics, producing states naturally.
+4. **Emergent Properties**  
+   - **Description**:  
+     The interplay of activation dynamics, meta-awareness modulation, and transitions leads to emergent behaviors such as sustained focus, spontaneous distractions, and recovery to meditative states.  
+   - **Implementation**:  
+     The `run` method in `run_simulation.py` integrates the above mechanisms to simulate meditation sessions:
+     ```python
+     def run(self, ...):
+         for t in range(simulation_steps):
+             self.network.update(current_state, meta_awareness, ...)
+             self.metacognition.update(self.network, current_state, dwell_time, t)
+             self.state_manager.update(self.network, self.metacognition, t)
+     ```
+   - **Role**:  
+     Produces realistic meditative experiences by allowing higher-order states to emerge from the combined effects of lower-level mechanisms.
 
+5. **Stochasticity in Dynamics**  
+   - **Description**:  
+     Controlled randomness is introduced to simulate real-world variability in meditation, such as distractions or fluctuations in focus.  
+   - **Implementation**:  
+     Found throughout `thoughtseed_network.py` and `metacognition.py`, stochastic elements influence both activations and meta-awareness:
+     ```python
+     final_target = base_targets[ts] + interaction_effects.get(ts, 0.0) + np.random.normal(0, noise_variance)
+     ```
+   - **Role**:  
+     Ensures robustness and diversity in the simulation, preventing overly deterministic behaviors and fostering emergent dynamics.
+
+6. **Integration with Learning Mechanisms**  
+   - **Description**:  
+     Simulation mechanisms are tightly integrated with learning mechanisms to ensure that feedback from simulated sessions refines the framework’s parameters, creating a feedback loop.  
+   - **Implementation**:  
+     Found in `learning_thoughtseeds_revised.py`, where weights, interactions, and transitions are updated based on simulation outcomes:
+     ```python
+     feedback = evaluate_simulation(session_results)
+     adjust_weights(feedback)
+     refine_transitions(feedback)
+     ```
+   - **Role**:  
+     Aligns learning and simulation, allowing the framework to iteratively improve based on emergent behaviors.
+
+---
+
+These features collectively drive the dynamics of the Thoughtseeds Framework, enabling it to simulate meditation as an emergent, adaptive process that mirrors real-world cognitive states.
 ---
 
 ## Why Emergent Phenomena, Not Hard-Coded Rules
