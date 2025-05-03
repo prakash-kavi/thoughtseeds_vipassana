@@ -3,7 +3,8 @@ This repository contains the Python implementation of the *Thoughtseeds Framewor
 
 **"Thoughtseeds Framework: A Hierarchical and Agentic Framework for Investigating Thought Dynamics in Meditative States"**  
 Prakash Chandra Kavi, Gorka Zamora-López, Daniel Ari Friedman, Gustavo Patow  
-*Entropy*, 2025, DOI: [Pending publication, to be updated]
+Citation: Kavi, P.C.; Zamora-López,G.; Friedman, D.A.; Patow, G.Thoughtseeds: A Hierarchical and Agentic Framework for Investigating Thought Dynamics in Meditative States. 
+Entropy 2025, 27, 459. https://doi.org/10.3390/e27050459
 
 ## Overview
 
