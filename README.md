@@ -106,7 +106,7 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
            else:
                self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
    
-3. **Interaction Matrix Extraction**  
+2. **Interaction Matrix Extraction**  
    - **Causal Relationships**: The interaction matrix identifies causal relationships between thoughtseeds, revealing how their activations influence each other during meditation.  
    - **Granger Causality**: Relationships are computed using Granger causality, which analyzes temporal dependencies in activation dynamics.  
    - **Adaptive Refinement**: Interactions are supplemented with domain knowledge to reflect expertise-dependent dynamics. For example, `breath_focus` may inhibit `pending_tasks` more effectively for experts.  
@@ -121,23 +121,23 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
      ```  
    - **Role**: Enables self-organized inhibition and facilitation patterns, adapting over time to reflect meditative expertise.
 
-4. **Transition Matrix Construction**  
-- **Tracking Transitions**: Transition matrices monitor the frequency of state-to-state shifts, capturing emergent dynamics instead of relying on predefined sequences.
-- **State Probabilities**: Transition probabilities are derived from accumulated counts of observed shifts during training.
-- **Implementation**: Found in `learning_thoughtseeds_revised.py`, the `train` method updates the transition matrix incrementally:
-  ```python
-  # Increment transition counts for observed state changes
-  self.transition_counts[current_state][next_state] += 1
-  
-  # Compute transition probabilities from counts
-  for state in self.transition_counts:
-      total_transitions = sum(self.transition_counts[state].values())
-      self.transition_probs[state] = {
-          next_state: count / total_transitions
-          for next_state, count in self.transition_counts[state].items()
-      }
-  ```
-  Role: Supports emergent transitions by modeling natural shifts in meditative states, such as moving from `mind_wandering` to `meta_awareness` without hardcoded rules.
+3. **Transition Matrix Construction**  
+  - **Tracking Transitions**: Transition matrices monitor the frequency of state-to-state shifts, capturing emergent dynamics instead of relying on predefined sequences.
+  - **State Probabilities**: Transition probabilities are derived from accumulated counts of observed shifts during training.
+  - **Implementation**: Found in `learning_thoughtseeds_revised.py`, the `train` method updates the transition matrix incrementally:
+    ```python
+    # Increment transition counts for observed state changes
+    self.transition_counts[current_state][next_state] += 1
+    
+    # Compute transition probabilities from counts
+    for state in self.transition_counts:
+        total_transitions = sum(self.transition_counts[state].values())
+        self.transition_probs[state] = {
+            next_state: count / total_transitions
+            for next_state, count in self.transition_counts[state].items()
+        }
+    ```
+   - **Role**: Supports emergent transitions by modeling natural shifts in meditative states, such as moving from `mind_wandering` to `meta_awareness` without hardcoded rules.
 
 5. Feedback-Driven Adaptation  
    - **Iterative Refinement**: Simulated meditation sessions provide feedback, guiding updates to weights, interactions, and transitions.  
