@@ -76,7 +76,7 @@ These processes are interconnected, with bidirectional feedback ensuring that ch
 
 ## Learning Mechanisms: Adapting Through Experience
 
-Learning mechanisms adapt the framework’s weights and interactions based on simulated meditation, enabling self-organization. These are primarily implemented in `learning_thoughtseeds_revised.py` and `extract_interactions.py`.
+Learning mechanisms adapt the framework’s weights and interactions based on simulated meditation, enabling **self-organization**. These mechanisms are primarily implemented in `learning_thoughtseeds_revised.py` and `extract_interactions.py`.
 
 ### Weight Initialization and Updates
 - **Implementation**: In `learning_thoughtseeds_revised.py`, the `RuleBasedHybridLearner` class initializes weights in its `__init__` method:
@@ -91,9 +91,6 @@ Learning mechanisms adapt the framework’s weights and interactions based on si
               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.7, 0.9)
           else:
               self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
-  ```
-  Weights are updated during training in the `train` method, which calls `update_activations` to adjust activations and `handle_transitions` to refine transition patterns.
-- **Role**: Weights define thoughtseed-state associations, adapting through experience to reflect practice effects (e.g., stronger `breath_focus` in `breath_control` for experts).
 
 ### Interaction Matrix Extraction
 - **Implementation**: In `extract_interactions.py`, the `extract_interaction_matrix` function computes interactions using Granger causality:
