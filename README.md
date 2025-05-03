@@ -85,7 +85,11 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
 
 ### Key Features of Learning Mechanisms
 
-1. **Dynamic Weight Adaptation**:
+1. **Dynamic Weight Adaptation**  
+   - **Primary Attractors**: Thoughtseeds most relevant to a meditative state are given higher initial weights.  
+   - **Secondary Attractors**: Thoughtseeds indirectly related to a meditative state are assigned moderate weights.  
+   - **Stochastic Adjustments**: Random perturbations within defined ranges simulate individual variability and learning uncertainty.  
+
    - The framework adapts the interaction weights between thoughtseeds and meditative states based on simulated experiences.
    - Weights are initialized and updated using a hybrid rule-based and stochastic approach, ensuring both structure and flexibility.
    - Implementation is found in `learning_thoughtseeds_revised.py`, specifically within the `RuleBasedHybridLearner` class.
@@ -101,11 +105,8 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
                self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.7, 0.9)
            else:
                self.weights[ts_idx, state_idx] = THOUGHTSEED_AGENTS[ts]["intentional_weights"][experience_level] * np.random.uniform(0.05, 0.2)
-**Primary Attractors**: Thoughtseeds most relevant to a meditative state are given higher initial weights.
-**Secondary Attractors**: Thoughtseeds indirectly related to a meditative state are assigned moderate weights.
-**Stochastic Adjustments**: Random perturbations within defined ranges simulate individual variability and learning uncertainty.
-
-2. Interaction Matrix Extraction  
+   
+3. **Interaction Matrix Extraction**  
    - **Causal Relationships**: The interaction matrix identifies causal relationships between thoughtseeds, revealing how their activations influence each other during meditation.  
    - **Granger Causality**: Relationships are computed using Granger causality, which analyzes temporal dependencies in activation dynamics.  
    - **Adaptive Refinement**: Interactions are supplemented with domain knowledge to reflect expertise-dependent dynamics. For example, `breath_focus` may inhibit `pending_tasks` more effectively for experts.  
@@ -120,7 +121,7 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
      ```  
    - **Role**: Enables self-organized inhibition and facilitation patterns, adapting over time to reflect meditative expertise.
 
-3. Transition Matrix Construction  
+4. Transition Matrix Construction  
    - **Tracking Transitions**: Transition matrices monitor the frequency of state-to-state shifts, capturing emergent dynamics instead of relying on predefined sequences.  
    - **State Probabilities**: Transition probabilities are derived from accumulated counts of observed shifts during training.  
    - **Implementation**: Found in `learning_thoughtseeds_revised.py`, the `train` method updates the transition matrix incrementally:  
@@ -129,22 +130,22 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
      ```  
    - **Role**: Supports emergent transitions by modeling natural shifts in meditative states, such as moving from `mind_wandering` to `meta_awareness` without hardcoded rules.
 
-4. Feedback-Driven Adaptation  
+5. Feedback-Driven Adaptation  
    - **Iterative Refinement**: Simulated meditation sessions provide feedback, guiding updates to weights, interactions, and transitions.  
    - **Learning from Outcomes**: Patterns of success (e.g., sustained `meta_awareness`) inform adjustments to optimize meditative dynamics.  
    - **Role**: Ensures that the framework evolves based on experience, mirroring the iterative nature of real-world meditation practice.
 
-5. Expertise-Dependent Learning  
+6. Expertise-Dependent Learning  
    - **Progression Modeling**: The framework adjusts learning parameters to reflect expertise levels, from novice to expert meditators.  
    - **Behavioral Differences**: Novices may exhibit weaker inhibition of distractions like `pending_tasks`, whereas experts demonstrate stronger, consistent suppression.  
    - **Role**: Captures the progressive refinement of cognitive control and attentional focus through practice.
 
-6. Stochasticity and Variability  
+7. Stochasticity and Variability  
    - **Simulating Real-World Variability**: Controlled randomness is introduced to mimic individual differences and real-world inconsistencies.  
    - **Exploration vs. Exploitation**: Noise fosters exploration of novel state transitions while reinforcing successful patterns.  
    - **Role**: Encourages robustness and diversity in learning, preventing premature convergence on suboptimal solutions.
 
-7. Integration of Domain Knowledge  
+8. Integration of Domain Knowledge  
    - **Enhancing Learning**: Expert insights into meditation practices and cognitive dynamics refine the framework’s learning mechanisms.  
    - **Validated Interactions**: Causal relationships are supplemented with theoretical and empirical knowledge to ensure alignment with meditative principles.  
    - **Role**: Ensures that learned patterns remain grounded in established scientific and meditative frameworks.
