@@ -49,31 +49,35 @@ This is flat repository structure, and hence I provide high level organization.
   4. run_simulation.py
   5. visualize_simulation.py (Figure 8)
 
-# Self-Organization and Emergence in the Thoughtseeds Framework
+# Self-Organization and Emergence
 
-The Thoughtseeds Framework simulates thought dynamics during Vipassana meditation using principles of **self-organization** and **emergence**. Complex cognitive behaviors, such as transitions between meditative states (*breath_control*, *mind_wandering*, etc.), arise from simple, local interactions among attentional agents called "thoughtseeds" (e.g., `breath_focus`, `pain_discomfort`).
+The Thoughtseeds Framework simulates thought dynamics during Vipassana meditation using principles of **self-organization** and **emergence**. These principles enable complex cognitive behaviors, such as transitions between meditative states (*breath_control*, *mind_wandering*, etc.), to arise from local interactions among attentional agents, or "thoughtseeds" (e.g., `breath_focus`, `pain_discomfort`).
 
-- **Self-Organization**: Local interactions between thoughtseeds evolve dynamically, forming ordered patterns without centralized control. For example, the `ThoughtseedNetwork.update` method in `thoughtseed_network.py` adjusts activations based on state-specific targets and interaction effects, fostering competitive dynamics that lead to natural state transitions.
+- **Self-Organization**: Local interactions between thoughtseeds evolve dynamically, forming ordered patterns without centralized control. For instance, the `ThoughtseedNetwork.update` method in `thoughtseed_network.py` adjusts activations based on state-specific targets and interaction effects. This fosters competitive dynamics that naturally lead to state transitions.
 
-- **Emergence**: Higher-level meditative states emerge from the interplay of thoughtseed activations and meta-awareness, as modeled in `metacognition.py` (e.g., the `MetaCognitiveMonitor.update` method). These emergent states are not pre-programmed but arise organically during simulations.
+- **Emergence**: Higher-level meditative states emerge from the interplay of thoughtseed activations and meta-awareness. This is modeled in `metacognition.py` (e.g., the `MetaCognitiveMonitor.update` method), where meta-awareness dynamically modulates thoughtseed competition to produce emergent states.
 
-By linking **learning mechanisms** (e.g., weight adaptation in `learning_thoughtseeds_revised.py`) with **simulation mechanisms** (e.g., state transitions in `run_simulation.py`), the framework demonstrates how meditative states and transitions emerge as a natural outcome of the system’s dynamics.
+By connecting **learning mechanisms** (e.g., weight adaptation in `learning_thoughtseeds_revised.py`) with **simulation mechanisms** (e.g., state transitions in `run_simulation.py`), the framework demonstrates how meditative states and transitions arise as emergent phenomena.
 
 ---
 
 ## Core Concepts
 
-- **Self-Organization**: The Thoughtseeds Framework models self-organization as the result of local interactions among attentional agents ("thoughtseeds"), such as `breath_focus` and `pain_discomfort`. These interactions form ordered patterns like sustained focus without requiring centralized control. This behavior is implemented in the `ThoughtseedNetwork.update` method in `thoughtseed_network.py`, where activations evolve based on interaction matrices and state-specific targets.
+The Thoughtseeds Framework is built upon a hierarchical structure that facilitates **self-organization** and **emergence**. This structure integrates three interconnected levels:
 
-- **Emergence**: Higher-level phenomena, such as meditative states (`breath_control`, `mind_wandering`), emerge naturally from the dynamic interplay of thoughtseed activations and meta-awareness. The `MetaCognitiveMonitor.update` method in `metacognition.py` dynamically modulates meta-awareness, influencing the competitive dynamics that drive state transitions.
+1. **Knowledge Domains**:
+   - Represent domain-specific attractors for thoughtseeds.
+   - For example, primary and secondary attractors are defined in `learning_thoughtseeds_revised.py` to guide thoughtseed activations during specific meditative states.
 
-- **Hierarchical Structure**: The framework’s design integrates three levels:
-  1. **Knowledge Domains**: Represent domain-specific attractors for thoughtseeds (e.g., primary and secondary attractors in `learning_thoughtseeds_revised.py`).
-  2. **Thoughtseed Network**: Models local interactions and activation dynamics (`thoughtseed_network.py`).
-  3. **Meta-Cognition**: Regulates thoughtseed competition and state transitions (`metacognition.py`).
+2. **Thoughtseed Network**:
+   - Models local interactions and activation dynamics.
+   - Implemented in `thoughtseed_network.py`, where the `update` method simulates the competitive dynamics among thoughtseeds.
 
-These processes are interconnected, with bidirectional feedback ensuring that changes at one level influence the others.
+3. **Meta-Cognition**:
+   - Regulates thoughtseed competition and state transitions.
+   - Implemented in `metacognition.py`, where the `MetaCognitiveMonitor.update` method modulates meta-awareness based on state and habituation.
 
+These levels are interconnected through bidirectional feedback, ensuring that changes in one level influence the others. This hierarchical design enables the framework to model meditative states and transitions realistically and adaptively.
 ## Learning Mechanisms: Adapting Through Experience
 
 Learning mechanisms adapt the framework’s weights and interactions based on simulated meditation, enabling **self-organization**. These mechanisms are primarily implemented in `learning_thoughtseeds_revised.py` and `extract_interactions.py`.
