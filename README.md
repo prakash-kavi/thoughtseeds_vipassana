@@ -139,24 +139,7 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
       ```
      - **Role**: Supports emergent transitions by modeling natural shifts in meditative states, such as moving from `mind_wandering` to `meta_awareness` without hardcoded rules.
 
-### 4. **Feedback-Driven Adaptation**  
-   - **Iterative Refinement**:  
-     The framework incorporates simulated meditation sessions to provide feedback loops, allowing for iterative updates to weights, interactions, and transition probabilities.  
-   - **Learning from Outcomes**:  
-     Patterns of success, such as sustained `meta_awareness` states or efficient transitions between meditative states, inform adjustments to optimize meditative dynamics.  
-   - **Implementation**:  
-     Feedback mechanisms dynamically refine the framework during both training and simulation phases. For example, in `learning_thoughtseeds_revised.py`, the `train` method integrates feedback to adjust parameters iteratively:  
-     ```python
-     for session in simulated_sessions:
-         feedback = evaluate_session(session)
-         adjust_weights(feedback)
-         refine_interactions(feedback)
-         update_transitions(feedback)
-     ```
-   - **Role**:  
-     This mechanism ensures the framework evolves based on experiential feedback, mirroring the iterative and adaptive nature of real-world meditation practices.
-
-5. **Expertise-Dependent Learning**  
+4. **Expertise-Dependent Learning**  
    - **Progression Modeling**:  
      The framework adjusts learning parameters to simulate progression from novice to expert meditators.  
    - **Behavioral Differences**:  
@@ -172,7 +155,7 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
    - **Role**:  
      Captures the progressive refinement of cognitive control and attentional focus, enabling realistic simulations of meditative expertise.
      
-6. **Stochasticity and Variability**  
+5. **Stochasticity and Variability**  
    - **Simulating Real-World Variability**:  
      Controlled randomness is introduced to replicate individual differences and real-world inconsistencies during meditation.  
    - **Exploration vs. Exploitation**:  
@@ -185,7 +168,7 @@ The Thoughtseeds Framework employs adaptive learning mechanisms to dynamically a
    - **Role**:  
      Promotes robustness and adaptability in learning by simulating variability in meditation experiences.
 
-7. **Integration of Domain Knowledge**  
+6. **Integration of Domain Knowledge**  
    - **Enhancing Learning**:  
      Expert insights into meditation practices and cognitive dynamics are embedded to refine the framework's learning mechanisms.  
    - **Validated Interactions**:  
