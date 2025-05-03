@@ -49,7 +49,7 @@ This is flat repository structure, and hence I provide high level organization.
   4. run_simulation.py
   5. visualize_simulation.py (Figure 8)
 
-# Self-Organization and Emergence
+# Self-Organization and Emergence in Thoughtseeds Framework
 
 The Thoughtseeds Framework simulates thought dynamics during Vipassana meditation using principles of **self-organization** and **emergence**. These principles enable complex cognitive behaviors, such as transitions between meditative states (*breath_control*, *mind_wandering*, etc.), to arise from local interactions among attentional agents, or "thoughtseeds" (e.g., `breath_focus`, `pain_discomfort`).
 
